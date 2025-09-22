@@ -31,12 +31,26 @@
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
         width: 100%;
+        scroll-behavior: smooth;
     }
     
     /* Ensure all containers fit within viewport */
     .container {
         max-width: 100%;
         overflow-x: hidden;
+    }
+    
+    /* Ensure sections don't trap users */
+    section {
+        position: relative;
+        overflow: visible;
+        min-height: auto;
+    }
+    
+    /* Smooth scrolling for anchor links */
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
     }
     
     /* Prevent horizontal overflow on mobile */
@@ -67,6 +81,24 @@
         img {
             max-width: 100%;
             height: auto;
+        }
+        
+        /* Reduce section padding on mobile */
+        section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+        
+        /* Ensure smooth scrolling and prevent getting stuck */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* Prevent overflow issues */
+        section {
+            min-height: auto;
+            overflow: visible;
         }
     }
     
