@@ -169,6 +169,60 @@
     /* FAQ Accordion */
     details > summary { list-style: none; }
     details > summary::-webkit-details-marker { display: none; }
+    
+    /* Smooth FAQ animations */
+    details[open] .faq-content {
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    details:not([open]) .faq-content {
+        animation: slideUp 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+    }
+    
+    /* Smooth icon rotation */
+    .faq-icon {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    details[open] .faq-icon {
+        transform: rotate(180deg);
+    }
+    
+    /* Smooth hover effects */
+    .faq-item {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
 <body class="bg-brand-dark text-brand-light">
@@ -374,36 +428,36 @@
                     <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Algengar Spurningar</h2>
                 </div>
                 <div class="space-y-4">
-                    <details class="bg-brand-dark rounded-lg group fade-in-up stagger-1 border border-white/10 overflow-hidden">
-                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-colors">
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-1 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
                             <span>Hentar þetta prógramm fyrir byrjendur?</span>
-                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-[var(--brand-accent)]">
+                            <span class="faq-icon text-[var(--brand-accent)]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </span>
                         </summary>
-                        <div class="px-6 pb-8 pt-2">
+                        <div class="faq-content px-6 pb-8 pt-2">
                             <p class="text-gray-400 leading-relaxed">Já, algjörlega! Við sérsníðum allar áætlanir að þínum forsendum, hvort sem þú ert að stíga þín fyrstu skref eða ert vanur/vön hreyfingu.</p>
                         </div>
                     </details>
-                    <details class="bg-brand-dark rounded-lg group fade-in-up stagger-2 border border-white/10 overflow-hidden">
-                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-colors">
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-2 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
                            <span>Þarf ég aðgang að líkamsræktarstöð?</span>
-                           <span class="transform transition-transform duration-300 group-open:rotate-180 text-[var(--brand-accent)]">
+                           <span class="faq-icon text-[var(--brand-accent)]">
                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </span>
                         </summary>
-                        <div class="px-6 pb-8 pt-2">
+                        <div class="faq-content px-6 pb-8 pt-2">
                             <p class="text-gray-400 leading-relaxed">Nei, það er ekki nauðsynlegt. Við getum útbúið áætlun sem þú getur framkvæmt heima með lágmarksbúnaði eða eingöngu eigin líkamsþyngd.</p>
                         </div>
                     </details>
-                    <details class="bg-brand-dark rounded-lg group fade-in-up stagger-3 border border-white/10 overflow-hidden">
-                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-colors">
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-3 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
                             <span>Hvað ef ég hef sérþarfir varðandi mataræði?</span>
-                             <span class="transform transition-transform duration-300 group-open:rotate-180 text-[var(--brand-accent)]">
+                             <span class="faq-icon text-[var(--brand-accent)]">
                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </span>
                         </summary>
-                        <div class="px-6 pb-8 pt-2">
+                        <div class="faq-content px-6 pb-8 pt-2">
                             <p class="text-gray-400 leading-relaxed">Ekkert mál. Við tökum fullt tillit til ofnæmis, óþols, matarvenja (t.d. grænmetisæta) og annarra sérþarfa þegar við setjum saman næringaráætlunina þína.</p>
                         </div>
                     </details>
