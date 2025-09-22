@@ -2,7 +2,7 @@
 <html lang="is" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simple Success | Fjarþjálfun & Næring</title>
     
     <!-- Tailwind CSS -->
@@ -29,6 +29,45 @@
         color: var(--brand-light-text);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Ensure all containers fit within viewport */
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent horizontal overflow on mobile */
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* Mobile-specific fixes */
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Ensure text doesn't overflow */
+        h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Fix any potential overflow issues */
+        .grid {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        /* Ensure images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     }
     
     .hero-section {
