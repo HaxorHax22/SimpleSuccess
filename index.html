@@ -214,14 +214,23 @@
         transform: rotate(180deg);
     }
     
-    /* Smooth hover effects */
+    /* Smooth hover effects with blue glow */
     .faq-item {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .faq-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .faq-item:hover .faq-icon {
+        box-shadow: 0 0 20px rgba(47, 129, 247, 0.6);
+    }
+    
+    /* Blue glow effect for FAQ items */
+    .faq-item:hover {
+        box-shadow: 0 0 40px rgba(47, 129, 247, 0.4), 0 0 80px rgba(47, 129, 247, 0.2), 0 25px 50px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
