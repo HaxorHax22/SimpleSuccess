@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="is" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Skilmálar - Simple Success</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+    :root {
+        --brand-dark-blue: #151F28; /* Main Background */
+        --brand-mid-blue: #1E2A35; /* Card Background */
+        --brand-light-text: #FFFFF5; /* White from logo */
+        --brand-gray-text: #8B949E; /* Secondary Text */
+        --brand-accent: #1E40AF; /* Darker Blue Accent */
+        --brand-accent-hover: #1E3A8A; /* Even darker blue for hover */
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--brand-dark-blue);
+        color: var(--brand-light-text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: auto;
+        scroll-behavior: smooth;
+    }
+    
+    /* Ensure all containers fit within viewport */
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Ensure sections don't trap users */
+    section {
+        position: relative;
+        overflow: visible;
+        min-height: auto;
+        height: auto;
+    }
+
+    /* Fix all containers to prevent scroll trapping */
+    .container {
+        overflow: visible;
+        position: relative;
+    }
+
+    /* Ensure grids don't create scroll issues */
+    .grid {
+        overflow: visible;
+        position: relative;
+    }
+
+    /* Fix all cards and content containers */
+    .card, .bg-brand-mid-blue, .bg-brand-dark {
+        overflow: visible;
+        position: relative;
+    }
+    
+    /* Smooth scrolling for anchor links */
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    /* Prevent horizontal overflow on mobile */
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* Mobile-specific fixes */
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Ensure text doesn't overflow */
+        h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Fix any potential overflow issues */
+        .grid {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        /* Ensure images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Reduce section padding on mobile */
+        section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+        
+        /* Ensure smooth scrolling and prevent getting stuck */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* Prevent overflow issues */
+        section {
+            min-height: auto;
+            overflow: visible;
+            height: auto;
+        }
+
+        /* Ensure all containers are scroll-friendly on mobile */
+        .container, .grid, .card {
+            overflow: visible;
+            position: relative;
+        }
+
+        /* Fix any potential scroll traps */
+        * {
+            overflow-x: hidden;
+        }
+
+        /* Ensure smooth scrolling on mobile */
+        html, body {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+    
+    .hero-section {
+        perspective: 1000px;
+    }
+
+    .hero-background {
+        transform-style: preserve-3d;
+    }
+
+    /* Ken Burns Effect */
+    .ken-burns-effect {
+        animation: kenBurns 25s ease-in-out infinite alternate;
+    }
+    
+    @keyframes kenBurns {
+        0% { transform: scale(1.1) translate(0, 0); }
+        100% { transform: scale(1.25) translate(-3%, -3%); }
+    }
+    
+    /* Header Styles */
+    #header-nav a { color: var(--brand-light-text); }
+    #header.header-scrolled {
+        background: rgba(13, 17, 23, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+     #header.header-scrolled #header-nav a {
+        color: var(--brand-light-text);
+    }
+    #header.header-scrolled .text-white {
+        color: var(--brand-light-text) !important;
+    }
+
+
+    /* Animation Classes */
+    .fade-in-up, .fade-in-left, .fade-in-right {
+        opacity: 0;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-in-up { transform: translateY(40px); }
+    .fade-in-left { transform: translateX(-40px); }
+    .fade-in-right { transform: translateX(40px); }
+
+    .fade-in-up.show, .fade-in-left.show, .fade-in-right.show {
+            opacity: 1;
+        transform: translate(0, 0);
+        }
+        
+        /* Staggered Animation Delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        .hover-glow:hover {
+        box-shadow: 0 0 50px rgba(47, 129, 247, 0.25);
+    }
+
+        .pricing-card {
+            background: var(--brand-mid-blue);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: visible;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(30, 64, 175, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(30, 64, 175, 0.1);
+        }
+
+        .price-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
+            border-radius: 1rem;
+        }
+
+        .pricing-options {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.4s ease,
+                        margin-top 0.4s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .pricing-options.expanded {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            overflow: visible;
+        }
+
+        .option-card {
+            background: rgba(21, 31, 40, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            overflow: visible;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: rgba(30, 64, 175, 0.4);
+            background: rgba(21, 31, 40, 0.8);
+            transform: translateX(4px);
+        }
+
+        .option-card.featured {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.15) 0%, rgba(30, 64, 175, 0.05) 100%);
+            border: 1px solid rgba(30, 64, 175, 0.3);
+        }
+
+        .option-card.featured:hover {
+            border-color: rgba(30, 64, 175, 0.5);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.2) 0%, rgba(30, 64, 175, 0.1) 100%);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+            box-shadow: 0 4px 14px 0 rgba(30, 64, 175, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .expand-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            border-color: rgba(30, 64, 175, 0.5);
+            background: rgba(30, 64, 175, 0.05);
+        }
+
+        .chevron {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Ensure pricing section doesn't trap users */
+        #program {
+            overflow: visible;
+            position: relative;
+        }
+
+        #program .grid {
+            overflow: visible;
+        }
+
+        #program .pricing-card {
+            min-height: auto;
+            overflow: visible;
+        }
+
+    /* Refined Button Hover Effects */
+    .btn-accent {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25); /* Base shadow */
+    }
+    .btn-accent:hover {
+        transform: translateY(-4px) scale(1.03);
+        background-color: var(--brand-accent-hover);
+        box-shadow: 0 10px 20px rgba(47, 129, 247, 0.2), 0 6px 6px rgba(47, 129, 247, 0.23); /* Glow effect */
+    }
+    .btn-accent:active {
+        transform: translateY(-1px) scale(1.01);
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Shimmer Effect for Buttons - REMOVED */
+    
+    /* Mobile Menu */
+    #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        background-color: var(--brand-dark-blue);
+    }
+    #mobile-menu.show {
+        transform: translateX(0);
+    }
+    .hamburger-line { background-color: var(--brand-light-text); transition: all 0.3s ease-in-out; }
+    #mobile-menu-button.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    #mobile-menu-button.active span:nth-child(2) { opacity: 0; }
+    #mobile-menu-button.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+    /* FAQ Accordion */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    
+    /* Smooth FAQ animations */
+    details[open] .faq-content {
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    details:not([open]) .faq-content {
+        animation: slideUp 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+    }
+    
+    /* Smooth icon rotation */
+    .faq-icon {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    details[open] .faq-icon {
+        transform: rotate(180deg);
+    }
+    
+    /* Smooth hover effects with blue glow */
+    .faq-item {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .faq-item:hover .faq-icon {
+        color: #60a5fa;
+    }
+    
+    /* Subtle blue glow effect for FAQ items */
+    .faq-item:hover {
+        box-shadow: 0 0 15px rgba(47, 129, 247, 0.15), 0 0 30px rgba(47, 129, 247, 0.08), 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-light">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-1 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 z-50">
+                <img src="img/logo_nobackground.png" alt="Simple Success Logo" class="w-16 h-16 object-contain">
+                <span class="text-xl font-bold text-white hidden md:block">Simple Success</span>
+            </a>
+            
+            <nav id="header-nav" class="hidden md:flex items-center space-x-6">
+                <a href="index.html#about" class="hover:text-[var(--brand-accent)] transition-colors">Um Okkur</a>
+                <a href="index.html#method" class="hover:text-[var(--brand-accent)] transition-colors">Aðferðin</a>
+                <a href="index.html#program" class="hover:text-[var(--brand-accent)] transition-colors">Þjálfun</a>
+                <a href="index.html#testimonials" class="hover:text-[var(--brand-accent)] transition-colors">Árangur</a>
+                <a href="index.html#start" class="hover:text-[var(--brand-accent)] transition-colors">Byrjaðu núna</a>
+                <a href="index.html#faq" class="hover:text-[var(--brand-accent)] transition-colors">Spurningar</a>
+                <a href="index.html#contact" class="bg-[var(--brand-accent)] text-white px-5 py-2 rounded-full font-semibold btn-accent">Hafa samband</a>
+            </nav>
+            
+            <button id="mobile-menu-button" class="md:hidden p-2 z-50">
+                <div class="w-6 h-6 flex flex-col justify-around">
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 right-0 w-full h-full z-40">
+        <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-medium">
+            <a href="index.html#about" class="text-gray-200 hover:text-[var(--brand-accent)]">Um Okkur</a>
+            <a href="index.html#method" class="text-gray-200 hover:text-[var(--brand-accent)]">Aðferðin</a>
+            <a href="index.html#program" class="text-gray-200 hover:text-[var(--brand-accent)]">Þjálfun</a>
+            <a href="index.html#testimonials" class="text-gray-200 hover:text-[var(--brand-accent)]">Árangur</a>
+            <a href="index.html#start" class="text-gray-200 hover:text-[var(--brand-accent)]">Byrjaðu núna</a>
+            <a href="index.html#faq" class="text-gray-200 hover:text-[var(--brand-accent)]">Spurningar</a>
+            <a href="index.html#contact" class="mt-4 bg-[var(--brand-accent)] text-white px-8 py-3 rounded-full btn-accent">Hafa samband</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Skilmálar Section -->
+        <section class="py-24 bg-primary">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Header -->
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl md:text-5xl font-bold fade-in-up text-white mb-6">Skilmálar og Notkunarskilyrði</h1>
+                        <p class="text-lg text-gray-400 fade-in-up stagger-1">Simple Success</p>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 fade-in-up stagger-2 hover-lift">
+                        <div class="prose prose-lg max-w-none text-gray-300">
+                            
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">1. Almenn ákvæði</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Vinsamlegast kynntu þér eftirfarandi skilmála til að tryggja að góð samskipti, ánægjuleg viðskipti og fyrirbyggja allan misskilning sem kann að verða til í viðskiptum. Simple Success býður upp á fjarþjálfun, næringarþjálfun og fræðsluefni. Með kaupum á þjónustu eða vörum hjá Simple Success samþykkir kaupandi þessa skilmála og skuldbindur sig til að fylgja þeim.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">2. Réttur til að hætta við kaup</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Simple Success áskilur sér rétt til að hætta við kaup t.d. vegna rangra verð upplýsinga eða ef þjónusta/vörutegund er ekki lengur í boði. Einnig er heimilt að breyta verðum eða hætta að bjóða upp á tilteknar vörur eða þjónustu án fyrirvara.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">3. Einstaklingsaðgangur</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Aðgangur að æfingaráætlun, matarplani, fræðslu eða öðru efni er persónulegur. Óheimilt er að deila efni eða aðgangi með öðrum nema með skriflegu leyfi Simple Success.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">4. Verð og áskrift</h2>
+                            <ul class="mb-6 leading-relaxed space-y-2">
+                                <li>• Þjónusta Simple Success er greidd samkvæmt gildandi verðskrá hverju sinni og er birt á heimasíðunni.</li>
+                                <li>• Samningar eru með binditíma sem tilgreindur er við skráningu (t.d. 3 eða 6 mánuðir). Binditími framlengist ekki sjálfkrafa nema annað sé tekið fram.</li>
+                                <li>• Greiðslur eru gerðar fyrirfram. Sé greiðsla ekki innt af hendi innan 14 dögum frá gjalddaga getur aðgangur að þjónustu verið lokaður.</li>
+                                <li>• Notandi ber ábyrgð á að réttar greiðsluupplýsingar séu veittar við skráningu. Sé greiðslur ekki greiddar fara kröfur í innheimtu samkvæmt reglum.</li>
+                            </ul>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">5. Endurgreiðslur</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Greiðslur fyrir þjálfun eru ekki endurgreiddar eftir að kaup hafa átt sér stað, þar sem um fyrirframgreidda þjónustu er að ræða. Undantekning getur verið ef um tvígreiðslur er að ræða eða skyndilega getur viðkomandi ekki tekið þátt í þjálfuninni og þá þarf að framvísa læknisvottorði.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">6. Efni og höfundarréttur</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Allt efni sem Simple Success býður upp á, þar á meðal æfingaplön, matarplön, uppskriftir, fræðsla og önnur gögn, er í eigu Simple Success. Óheimilt er að afrita, dreifa eða deila efninu með þriðja aðila nema með skriflegu leyfi.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">8. Ábyrgð</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Kaupandi ber ábyrgð á eigin árangri og heilsu við nýtingu þjónustu Simple Success. Þjónustan er fyrst og fremst leiðbeiningar, en ábyrgðin á framkvæmd og niðurstöðum hvílir alfarið á kaupanda. Ef kaupandi er með heilsufarsvandamál er hann hvattur til að ráðfæra sig við lækni áður en þjónusta er nýtt.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">9. Trúnaður og persónuvernd</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Simple Success heitir fullum trúnaði um allar upplýsingar sem kaupandi gefur upp. Persónuupplýsingar eru einungis notaðar til að veita sem besta þjónustu og eru ekki afhentar þriðja aðila. Öllum upplýsingum um viðkomandi er eytt þegar samstarfi lýkur.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">10. Breytingar á skilmálum</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Simple Success áskilur sér rétt til að breyta skilmálum sínum. Breytingar taka gildi þegar þær hafa verið birtar á heimasíðu fyrirtækisins.
+                            </p>
+
+                            <h2 class="text-2xl font-bold text-white mb-6 text-[var(--brand-accent)]">11. Varnarþing</h2>
+                            <p class="mb-6 leading-relaxed">
+                                Ákvæði þessa skilmála skal túlka í samræmi við íslensk lög. Komi til ágreinings verður honum vísað til úrlausnar hjá íslenskum dómstólum. Ef spurningar vakna hafið samband við <a href="mailto:info@simplesuccess.is" class="text-[var(--brand-accent)] hover:underline">info@simplesuccess.is</a>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!-- Back to Home Button -->
+                    <div class="text-center mt-12">
+                        <a href="index.html" class="bg-[var(--brand-accent)] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[var(--brand-accent-hover)] transition-all duration-300 hover-lift">Til baka á heimasíðu</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-mid-blue text-gray-400 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <!-- Logo -->
+                <div class="flex justify-center lg:justify-center">
+                    <img src="img/logo_nobackground.png" alt="Simple Success Logo" class="w-36 h-36 lg:w-48 lg:h-48 object-contain">
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Fljótlegar tenglar</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="hover:text-white transition-colors duration-300">Um Okkur</a></li>
+                        <li><a href="index.html#method" class="hover:text-white transition-colors duration-300">Aðferðin</a></li>
+                        <li><a href="index.html#program" class="hover:text-white transition-colors duration-300">Þjálfun</a></li>
+                        <li><a href="index.html#contact" class="hover:text-white transition-colors duration-300">Hafa samband</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Hafa samband</h3>
+                    <div class="space-y-2">
+                        <p class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-[var(--brand-accent)]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            <a href="mailto:info@simplesuccess.is" class="hover:text-white transition-colors duration-300">info@simplesuccess.is</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Lögboðið</h3>
+                    <ul class="space-y-2">
+                        <li><a href="skilmalar.html" class="hover:text-white transition-colors duration-300">Skilmálar</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p>&copy; 2024 Simple Success. Allur réttur áskilinn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
+            mobileMenuButton.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.classList.remove('active');
+            });
+        });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Set current year
+        const currentYear = new Date().getFullYear();
+        const yearElement = document.getElementById('current-year');
+        if (yearElement) {
+            yearElement.textContent = currentYear;
+        }
+    });
+    </script>
+</body>
+</html>
