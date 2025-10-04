@@ -23,8 +23,8 @@
         --brand-accent-hover: #1E3A8A; /* Even darker blue for hover */
     }
 
-    body {
-        font-family: 'Inter', sans-serif;
+        body {
+            font-family: 'Inter', sans-serif;
         background-color: var(--brand-dark-blue);
         color: var(--brand-light-text);
         -webkit-font-smoothing: antialiased;
@@ -179,13 +179,13 @@
 
     /* Animation Classes */
     .fade-in-up, .fade-in-left, .fade-in-right {
-        opacity: 0;
+            opacity: 0;
         transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        }
     .fade-in-up { transform: translateY(40px); }
     .fade-in-left { transform: translateX(-40px); }
     .fade-in-right { transform: translateX(40px); }
-
+        
     .fade-in-up.show, .fade-in-left.show, .fade-in-right.show {
             opacity: 1;
         transform: translate(0, 0);
@@ -349,7 +349,7 @@
     /* Shimmer Effect for Buttons - REMOVED */
     
     /* Mobile Menu */
-    #mobile-menu {
+        #mobile-menu {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         background-color: var(--brand-dark-blue);
@@ -514,10 +514,10 @@
                             <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
                                 <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">1. Skráning & Upphaflegur Netfundur</h3>
                                 <p class="text-gray-400">Skráir þig í þjálfun og við byrjum á að taka netfund þar sem við förum yfir stöðuna, kynnumst þér aðeins betur og útskýrum hvernig allt ferlið virkar.</p>
-                            </div>
-                        </div>
-                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
                     </div>
+                            </div>
+                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
+                            </div>
 
                     <!-- Step 2: Right -->
                     <div class="relative mb-16 md:mb-24 fade-in-right stagger-2">
@@ -525,8 +525,8 @@
                              <div class="md:w-full md:text-left bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
                                 <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">2. Spurningalistinn</h3>
                                 <p class="text-gray-400">Við kynnumst þér enn betur. Þú svarar ítarlegum spurningum um þinn lífsstíl, matarvenjur, æfingar og markmið til að við getum hannað fullkomið plan fyrir þig.</p>
-                            </div>
                         </div>
+                            </div>
                          <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
                             </div>
 
@@ -536,10 +536,10 @@
                              <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
                                 <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">3. Sérsniðin Áætlun & Stuðningur</h3>
                                 <p class="text-gray-400">Byggt á þínum svörum búum við til matar- og æfingaplan sem er 100% sérsniðið að þér. Allt er aðgengilegt í einföldu appi og við erum með þér alla leið.</p>
-                            </div>
                         </div>
+                            </div>
                          <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
-                    </div>
+                            </div>
 
                     <!-- Step 4: Right -->
                     <div class="relative fade-in-right stagger-4">
@@ -547,7 +547,7 @@
                              <div class="md:w-full md:text-left bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
                                 <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">4. Fylgni & Endurskoðun</h3>
                                 <p class="text-gray-400">Tökum svo annan netfund eftir 6 vikur til að fara yfir stöðuna, endurskoða markmið ef þarf og gera breytingar á planinu til að tryggja besta mögulega árangur.</p>
-                            </div>
+                        </div>
                         </div>
                          <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
                     </div>
@@ -571,7 +571,7 @@
                             <div class="order-2 lg:order-1">
                                 <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
                                     <img src="img/about_Kjartan.png" alt="Kjartan" class="w-full h-full object-cover">
-                                </div>
+                    </div>
                             </div>
                             <!-- Text -->
                             <div class="order-1 lg:order-2">
@@ -608,7 +608,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-24 bg-brand-dark">
             <div class="container mx-auto px-6">
@@ -625,23 +625,13 @@
                             <!-- Testimonial 1 -->
                             <div class="w-full flex-shrink-0">
                                 <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                                        <!-- Image -->
-                                        <div class="order-2 lg:order-1">
-                                            <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
-                                                <img src="img/arangur2.png" alt="Árangur 1" class="w-full h-full object-contain">
-                                            </div>
-                                        </div>
-                                        <!-- Content -->
-                                        <div class="order-1 lg:order-2">
-                                            <div class="text-6xl text-[var(--brand-accent)] mb-4">"</div>
-                                            <blockquote class="text-lg text-gray-300 leading-relaxed mb-6">
-                                                "Með Simple Success náði ég markmiðum mínum á aðeins 3 mánuðum. Matarplanið var fullkomlega sérsniðið að mér og æfingarnar voru ekki of erfiðar. Þjálfararnir eru alltaf til staðar og svara öllum spurningum."
-                                            </blockquote>
-                                            <div class="border-l-4 border-[var(--brand-accent)] pl-4">
-                                                <cite class="text-white font-semibold text-lg">Anna Jónsdóttir</cite>
-                                                <p class="text-gray-400 text-sm">-10kg á 3 mánuðum</p>
-                                            </div>
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Ég byrjaði í Simple Success í júlí með það markmið að léttast um 10 kg á 12 vikum. Ferlið hefur verið bæði krefjandi og gefandi. Það sem stendur upp úr fyrir mig er hversu einfalt og agað mataræðið er. Það er ekki eins og ég hafði ímyndað mér - ekki hungur eða þjáningar. Þjálfararnir eru alltaf til staðar og svara öllum spurningum."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Anna Jónsdóttir</cite>
+                                            <p class="text-gray-400 text-sm">-10kg á 3 mánuðum</p>
                                         </div>
                                     </div>
                                 </div>
@@ -650,23 +640,13 @@
                             <!-- Testimonial 2 -->
                             <div class="w-full flex-shrink-0">
                                 <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                                        <!-- Image -->
-                                        <div class="order-2 lg:order-1">
-                                            <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
-                                                <img src="img/arangur3.png" alt="Árangur 2" class="w-full h-full object-contain">
-                                            </div>
-                                        </div>
-                                        <!-- Content -->
-                                        <div class="order-1 lg:order-2">
-                                            <div class="text-6xl text-[var(--brand-accent)] mb-4">"</div>
-                                            <blockquote class="text-lg text-gray-300 leading-relaxed mb-6">
-                                                "Ég hafði aldrei hugsað að ég gæti náð svona góðum árangri. Næringarþjálfunin hjá Simple Success breytti lífsstílnum mínum algjörlega. Ég er orðin öruggari og heilbrigðari en nokkru sinni fyrr."
-                                            </blockquote>
-                                            <div class="border-l-4 border-[var(--brand-accent)] pl-4">
-                                                <cite class="text-white font-semibold text-lg">Sigríður Magnúsdóttir</cite>
-                                                <p class="text-gray-400 text-sm">-15kg á 6 mánuðum</p>
-                                            </div>
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Ég hafði aldrei hugsað að ég gæti náð svona góðum árangri. Næringarþjálfunin hjá Simple Success breytti lífsstílnum mínum algjörlega. Ég er orðin öruggari og heilbrigðari en nokkru sinni fyrr. Það er ótrúlegt hvað það er gott að fá sérsniðið matarplan sem byggir á þeim mat sem mér líkar."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Sigríður Magnúsdóttir</cite>
+                                            <p class="text-gray-400 text-sm">-15kg á 6 mánuðum</p>
                                         </div>
                                     </div>
                                 </div>
@@ -675,23 +655,13 @@
                             <!-- Testimonial 3 -->
                             <div class="w-full flex-shrink-0">
                                 <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
-                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                                        <!-- Image -->
-                                        <div class="order-2 lg:order-1">
-                                            <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
-                                                <img src="img/arangur4.png" alt="Árangur 3" class="w-full h-full object-contain">
-                                            </div>
-                                        </div>
-                                        <!-- Content -->
-                                        <div class="order-1 lg:order-2">
-                                            <div class="text-6xl text-[var(--brand-accent)] mb-4">"</div>
-                                            <blockquote class="text-lg text-gray-300 leading-relaxed mb-6">
-                                                "Bestu ákvörðunin sem ég hef tekið! Simple Success hjálpaði mér ekki aðeins að missa þyngd heldur að byggja upp góðar venjur sem ég held áfram með. Þjálfararnir eru sérstaklega góðir í að fylgja eftir."
-                                            </blockquote>
-                                            <div class="border-l-4 border-[var(--brand-accent)] pl-4">
-                                                <cite class="text-white font-semibold text-lg">Guðmundur Pétursson</cite>
-                                                <p class="text-gray-400 text-sm">-12kg á 4 mánuðum</p>
-                                            </div>
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Bestu ákvörðunin sem ég hef tekið! Simple Success hjálpaði mér ekki aðeins að missa þyngd heldur að byggja upp góðar venjur sem ég held áfram með. Þjálfararnir eru sérstaklega góðir í að fylgja eftir og svara öllum spurningum. Ég mæli með þeim öllum sem vilja breyta lífsstílnum sínum."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Guðmundur Pétursson</cite>
+                                            <p class="text-gray-400 text-sm">-12kg á 4 mánuðum</p>
                                         </div>
                                     </div>
                                 </div>
@@ -771,26 +741,26 @@
                                 <!-- 3 Months -->
                                 <div class="option-card rounded-xl p-5">
                                     <div class="flex justify-between items-center">
-                                        <div>
+                                <div>
                                             <div class="text-white font-semibold text-lg mb-1">3 Mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
-                                        </div>
+                                </div>
                                         <div class="text-white font-bold text-xl">27.990 kr/mán</div>
-                                    </div>
+                            </div>
                                 </div>
 
                                 <!-- 6 Months (Featured) -->
                                 <div class="option-card featured rounded-xl p-5">
                                     <div class="flex justify-between items-center">
-                                        <div>
+                                <div>
                                             <div class="text-white font-semibold text-lg mb-1">6 Mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
-                                        </div>
+                                </div>
                                         <div class="text-white font-bold text-xl">23.990 kr/mán</div>
                                     </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
 
                         <!-- Expand Button -->
                         <button onclick="toggleOptions('nutrition')" class="expand-btn w-full rounded-lg py-3 mt-6 text-gray-300 hover:text-white font-medium">
@@ -838,25 +808,25 @@
                                 <!-- 3 Months -->
                                 <div class="option-card rounded-xl p-5">
                                     <div class="flex justify-between items-center">
-                                        <div>
+                                <div>
                                             <div class="text-white font-semibold text-lg mb-1">3 Mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
-                                        </div>
+                                </div>
                                         <div class="text-white font-bold text-xl">34.990 kr/mán</div>
-                                    </div>
+                            </div>
                                 </div>
 
                                 <!-- 6 Months (Featured) -->
                                 <div class="option-card featured rounded-xl p-5">
                                     <div class="flex justify-between items-center">
-                                        <div>
+                                <div>
                                             <div class="text-white font-semibold text-lg mb-1">6 Mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
-                                        </div>
-                                        <div class="text-white font-bold text-xl">31.990 kr/mán</div>
-                                    </div>
                                 </div>
+                                        <div class="text-white font-bold text-xl">31.990 kr/mán</div>
                             </div>
+                        </div>
+                    </div>
                         </div>
 
                         <!-- Expand Button -->
@@ -890,15 +860,15 @@
                  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
                     <!-- Image 1 -->
                     <div class="fade-in-up stagger-1">
-                        <img src="img/arangur2.png" alt="Árangursmynd 1" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                        <img src="arangur/4,4 kg á 3 vikum 💪.png" alt="4,4 kg á 3 vikum" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
                     </div>
                     <!-- Image 2 -->
                     <div class="fade-in-up stagger-2">
-                        <img src="img/arangur3.png" alt="Árangursmynd 2" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
-                        </div>
-                     <!-- Image 3 -->
-                     <div class="fade-in-up stagger-3">
-                          <img src="img/arangur4.png" alt="Árangursmynd 3" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                        <img src="arangur/Árangur.png" alt="Árangur" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="fade-in-up stagger-3">
+                        <img src="arangur/Copy of Árangur (1).png" alt="Árangur" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
                     </div>
                 </div>
             </div>
@@ -915,8 +885,8 @@
                     <a href="#contact" class="bg-[var(--brand-accent)] text-white px-10 py-4 rounded-full font-semibold text-xl btn-accent">
                         Ég er Tilbúin/n!
                     </a>
-                </div>
             </div>
+                </div>
         </section>
 
         <!-- FAQ Section -->
@@ -924,7 +894,7 @@
             <div class="container mx-auto px-6 max-w-3xl">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Algengar Spurningar</h2>
-                </div>
+                    </div>
                 <div class="space-y-4">
                     <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-1 border border-white/10 overflow-hidden">
                         <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
@@ -935,7 +905,7 @@
                         </summary>
                         <div class="faq-content px-6 pb-8 pt-2">
                             <p class="text-gray-400 leading-relaxed">Já, algjörlega! Við sérsníðum allar áætlanir að þínum forsendum, hvort sem þú ert að stíga þín fyrstu skref eða ert vanur/vön hreyfingu.</p>
-                        </div>
+                    </div>
                     </details>
                     <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-2 border border-white/10 overflow-hidden">
                         <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
@@ -946,7 +916,7 @@
                         </summary>
                         <div class="faq-content px-6 pb-8 pt-2">
                             <p class="text-gray-400 leading-relaxed">Nei, það er ekki nauðsynlegt. Við getum útbúið áætlun sem þú getur framkvæmt heima með lágmarksbúnaði eða eingöngu eigin líkamsþyngd.</p>
-                    </div>
+                </div>
                     </details>
                     <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-3 border border-white/10 overflow-hidden">
                         <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
@@ -978,19 +948,19 @@
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-300">Nafn</label>
                                 <input type="text" name="name" id="name" required placeholder="Jón Jónsson" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
-                            </div>
+                        </div>
                             <div>
                                 <label for="kennitala" class="block text-sm font-medium text-gray-300">Kennitala</label>
                                 <input type="text" name="kennitala" id="kennitala" required placeholder="123456-7890" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
-                            </div>
+                    </div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-300">Símanúmer</label>
                                 <input type="tel" name="phone" id="phone" required placeholder="123-4567" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
-                            </div>
+                        </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-300">Netfang</label>
                                 <input type="email" name="email" id="email" required placeholder="jon@mail.com" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
-                            </div>
+                    </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-300">Skilaboð (og hvaða þjálfun þú hefur áhuga á)</label>
                                 <textarea name="message" id="message" rows="4" required placeholder="Halló, ég hef áhuga á fjarþjálfun..." class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white"></textarea>
@@ -998,8 +968,8 @@
                             <div>
                                 <button type="submit" class="w-full bg-[var(--brand-accent)] text-white py-3 px-6 rounded-full font-semibold text-lg btn-accent">
                                     Senda Skilaboð
-                                </button>
-                            </div>
+                        </button>
+                        </div>
                         </form>
                     </div>
                     <!-- Contact Info -->
@@ -1051,7 +1021,7 @@
                 <!-- Logo Column -->
                 <div class="flex justify-center lg:justify-center">
                     <img src="img/logo_nobackground.png" alt="Simple Success Logo" class="w-36 h-36 lg:w-48 lg:h-48 object-contain" role="img" aria-label="Simple Success Logo">
-                </div>
+            </div>
                 
                 <!-- Quick Links Column -->
                 <div>
