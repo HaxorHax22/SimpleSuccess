@@ -443,7 +443,7 @@
     #testimonial-carousel > div {
         width: 33.333333%; /* Each slide takes 1/3 of the total width */
         flex-shrink: 0;
-    }
+        }
     </style>
 </head>
 <body class="bg-brand-dark text-brand-light">
@@ -629,7 +629,7 @@
         <section id="testimonials" class="py-24 bg-brand-dark">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Árangurinn Talar Sínu Máli</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Umsagnir</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Hvað segja viðskiptavinir okkar um árangurinn sinn.</p>
                 </div>
                 
@@ -640,7 +640,7 @@
                         <div id="testimonial-carousel" class="flex transition-transform duration-500 ease-in-out">
                             <!-- Testimonial 1 -->
                             <div class="w-full flex-shrink-0">
-                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
                                     <div class="text-center">
                                         <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
                                             "Ég byrjaði í Simple Success í júlí með það markmið að léttast um 10 kg á 12 vikum. Ferlið hefur verið bæði krefjandi og gefandi. Það sem stendur upp úr fyrir mig er hversu einfalt og agað mataræðið er. Það er ekki eins og ég hafði ímyndað mér - ekki hungur eða þjáningar. Þjálfararnir eru alltaf til staðar og svara öllum spurningum."
@@ -655,7 +655,7 @@
                             
                             <!-- Testimonial 2 -->
                             <div class="w-full flex-shrink-0">
-                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
                                     <div class="text-center">
                                         <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
                                             "Ég hafði aldrei hugsað að ég gæti náð svona góðum árangri. Næringarþjálfunin hjá Simple Success breytti lífsstílnum mínum algjörlega. Ég er orðin öruggari og heilbrigðari en nokkru sinni fyrr. Það er ótrúlegt hvað það er gott að fá sérsniðið matarplan sem byggir á þeim mat sem mér líkar."
@@ -670,7 +670,7 @@
                             
                             <!-- Testimonial 3 -->
                             <div class="w-full flex-shrink-0">
-                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
                                     <div class="text-center">
                                         <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
                                             "Bestu ákvörðunin sem ég hef tekið! Simple Success hjálpaði mér ekki aðeins að missa þyngd heldur að byggja upp góðar venjur sem ég held áfram með. Þjálfararnir eru sérstaklega góðir í að fylgja eftir og svara öllum spurningum. Ég mæli með þeim öllum sem vilja breyta lífsstílnum sínum."
@@ -686,14 +686,14 @@
                     </div>
                     
                     <!-- Navigation Arrows -->
-                    <button id="prev-testimonial" class="absolute -left-4 md:left-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
-                        <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="prev-testimonial" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
                     
-                    <button id="next-testimonial" class="absolute -right-4 md:right-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
-                        <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="next-testimonial" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
@@ -869,7 +869,7 @@
         <section id="testimonials" class="py-24 bg-brand-mid-blue">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Árangurinn Talar Sínu Máli</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Árangurinn</h2>
                      <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Myndir frá okkar fólki sem sýna raunverulegan árangur.</p>
                 </div>
 
@@ -1235,7 +1235,9 @@
 
         function updateCarousel() {
             if (carousel) {
-                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                // Since each slide is 33.333333% of the total width (300%)
+                // We need to translate by 33.333333% for each slide
+                carousel.style.transform = `translateX(-${currentSlide * 33.333333}%)`;
                 
                 // Update dots
                 dots.forEach((dot, index) => {
