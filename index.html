@@ -670,23 +670,23 @@
                     </div>
                     
                     <!-- Navigation Arrows -->
-                    <button id="prev-testimonial" class="absolute left-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="prev-testimonial" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
                     
-                    <button id="next-testimonial" class="absolute right-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="next-testimonial" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
                     
                     <!-- Dots Indicator -->
-                    <div class="flex justify-center mt-8 space-x-2">
-                        <button class="testimonial-dot w-3 h-3 rounded-full bg-[var(--brand-accent)] transition-all duration-300" data-slide="0"></button>
-                        <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300" data-slide="1"></button>
-                        <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
+                    <div class="flex justify-center mt-8 space-x-3">
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-[var(--brand-accent)] transition-all duration-300 hover:scale-110" data-slide="0"></button>
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300 hover:scale-110" data-slide="1"></button>
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300 hover:scale-110" data-slide="2"></button>
                     </div>
                 </div>
             </div>
@@ -1256,6 +1256,41 @@
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => goToSlide(index));
         });
+
+        // Touch/Swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let isDragging = false;
+
+        if (carousel) {
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                endX = e.touches[0].clientX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const diffX = startX - endX;
+                const threshold = 50; // Minimum swipe distance
+                
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) {
+                        // Swiped left - next slide
+                        nextSlide();
+                    } else {
+                        // Swiped right - previous slide
+                        prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
 
         // Auto-play carousel (optional)
         setInterval(nextSlide, 8000); // Change slide every 8 seconds
