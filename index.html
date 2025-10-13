@@ -82,6 +82,25 @@
         box-sizing: border-box;
     }
     
+    /* Fix mobile touch scrolling issues */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent scroll traps on mobile for interactive elements */
+    button, a, input, select, textarea {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Ensure buttons don't interfere with scrolling */
+    .btn-accent, .cta-button, .expand-btn {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
     /* Mobile-specific fixes */
     @media (max-width: 768px) {
         .container {
@@ -132,15 +151,24 @@
             position: relative;
         }
 
-        /* Fix any potential scroll traps */
-        * {
+        /* Fix any potential scroll traps - only apply to body and html */
+        html, body {
             overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Ensure smooth scrolling on mobile */
         html, body {
             overflow-x: hidden;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+        }
+        
+        /* Prevent scroll traps in sections */
+        section {
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
         }
     }
     
@@ -353,6 +381,8 @@
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         background-color: var(--brand-dark-blue);
+        touch-action: manipulation;
+        -webkit-overflow-scrolling: touch;
     }
     #mobile-menu.show {
         transform: translateX(0);
@@ -433,6 +463,8 @@
     .carousel-container {
         width: 100%;
         position: relative;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
     }
     
     #testimonial-carousel {
@@ -457,8 +489,8 @@
             </a>
             
             <nav id="header-nav" class="hidden md:flex items-center space-x-6">
-                <a href="#about" class="hover:text-[var(--brand-accent)] transition-colors">Um Okkur</a>
-                <a href="#method" class="hover:text-[var(--brand-accent)] transition-colors">Aðferðin</a>
+                <a href="#about" class="hover:text-[var(--brand-accent)] transition-colors">Um okkur</a>
+                <a href="#method" class="hover:text-[var(--brand-accent)] transition-colors">Ferlið</a>
                 <a href="#program" class="hover:text-[var(--brand-accent)] transition-colors">Þjálfun</a>
                 <a href="#testimonials" class="hover:text-[var(--brand-accent)] transition-colors">Árangur</a>
                 <a href="#start" class="hover:text-[var(--brand-accent)] transition-colors">Byrjaðu núna</a>
@@ -479,8 +511,8 @@
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="md:hidden fixed top-0 left-0 right-0 w-full h-full z-40">
         <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-medium">
-            <a href="#about" class="text-gray-200 hover:text-[var(--brand-accent)]">Um Okkur</a>
-            <a href="#method" class="text-gray-200 hover:text-[var(--brand-accent)]">Aðferðin</a>
+            <a href="#about" class="text-gray-200 hover:text-[var(--brand-accent)]">Um okkur</a>
+            <a href="#method" class="text-gray-200 hover:text-[var(--brand-accent)]">Ferlið</a>
             <a href="#program" class="text-gray-200 hover:text-[var(--brand-accent)]">Þjálfun</a>
             <a href="#testimonials" class="text-gray-200 hover:text-[var(--brand-accent)]">Árangur</a>
             <a href="#start" class="text-gray-200 hover:text-[var(--brand-accent)]">Byrjaðu núna</a>
@@ -505,7 +537,7 @@
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a href="#program" class="w-full sm:w-auto bg-[var(--brand-accent)] text-white px-8 py-3 rounded-full font-semibold text-lg fade-in-up stagger-2 btn-accent">
-                    Skoða Þjálfun
+                    Skoða þjálfun
                 </a>
                 </div>
             </div>
@@ -515,7 +547,7 @@
         <section id="method" class="py-24 bg-brand-mid-blue">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-20">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Okkar Aðferð: Einföld Skref, Raunverulegur Árangur</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Okkar aðferð: einföld skref, raunverulegur árangur</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Við höfum einfaldað ferlið svo þú getir einbeitt þér að því sem skiptir máli.</p>
                 </div>
                 
@@ -528,7 +560,7 @@
                     <div class="relative mb-16 md:mb-24 fade-in-left stagger-1">
                         <div class="md:flex items-center md:justify-end md:mr-[55%]">
                             <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
-                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">1. Skráning & Upphaflegur Netfundur</h3>
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">1. Skráning & upphaflegur netfundur</h3>
                                 <p class="text-gray-400">Skráir þig í þjálfun og við byrjum á að taka netfund þar sem við förum yfir stöðuna, kynnumst þér aðeins betur og útskýrum hvernig allt ferlið virkar.</p>
                     </div>
                             </div>
@@ -550,7 +582,7 @@
                     <div class="relative mb-16 md:mb-24 fade-in-left stagger-3">
                         <div class="md:flex items-center md:justify-end md:mr-[55%]">
                              <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
-                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">3. Sérsniðin Áætlun & Stuðningur</h3>
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">3. Sérsniðin áætlun & stuðningur</h3>
                                 <p class="text-gray-400">Byggt á þínum svörum búum við til matar- og æfingaplan sem er 100% sérsniðið að þér. Allt er aðgengilegt í einföldu appi og við erum með þér alla leið.</p>
                         </div>
                             </div>
@@ -561,8 +593,8 @@
                     <div class="relative fade-in-right stagger-4">
                         <div class="md:flex items-center md:justify-start md:ml-[55%]">
                              <div class="md:w-full md:text-left bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
-                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">4. Fylgni & Endurskoðun</h3>
-                                <p class="text-gray-400">Tökum svo annan netfund eftir 6 vikur til að fara yfir stöðuna, endurskoða markmið ef þarf og gera breytingar á planinu til að tryggja besta mögulega árangur.</p>
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">4. Fylgni & endurskoðun</h3>
+                                <p class="text-gray-400">Þú skilar vikulega inn check-in þar sem við tökum stöðuna, förum yfir hvernig gengur og breytum og bætaum það sem þarf hverju sinni.Tökum svo annan netfund eftir 6 vikur til að fara yfir stöðuna, endurskoða markmið ef þarf og gera breytingar á planinu til að tryggja besta mögulega árangur.</p>
                         </div>
                         </div>
                          <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
@@ -575,7 +607,7 @@
         <section id="about" class="py-24 bg-brand-mid-blue">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hverjir Erum Við</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hver erum við</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Simple Success byggir á sameinuðum grunni þekkingar, reynslu og krafta okkar tveggja.</p>
                 </div>
                 
@@ -592,7 +624,7 @@
                             <!-- Text -->
                             <div class="order-1 lg:order-2">
                                 <h3 class="text-3xl font-bold text-white mb-3">Kjartan</h3>
-                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Styrktarþjálfari & Íþróttakennari</p>
+                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Styrktarþjálfari & íþróttakennari</p>
                                 <div class="text-gray-300 leading-relaxed space-y-4">
                                     <p>Kjartan er menntaður íþróttakennari og bráðatæknir. Hann hefur mikla reynslu af styrktarþjálfun, bæði búinn að þjálfa almenning og íþróttamenn.</p>
                                     <p>Kjartan hefur verið t.d. styrktarþjálfari hjá knattspyrnuliði Stjörnunnar, Val og Breiðabik. Sjálfur æfði hann körfubolta og frjálsar á yngri árum og hefur því mikla reynslu af því að vera þjálfari og iðkandi.</p>
@@ -607,7 +639,7 @@
                             <!-- Text -->
                             <div class="order-1">
                                 <h3 class="text-3xl font-bold text-white mb-3">Tinna</h3>
-                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Hjúkrunarfræðingur & Næringarþjálfari</p>
+                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Hjúkrunarfræðingur & næringarþjálfari</p>
                                 <div class="text-gray-300 leading-relaxed space-y-4">
                                     <p>Tinna er menntaður hjúkrunarfræðingur, sjúkraliði og sjúkraflutningamaður. Hún er einnig að taka L1 næringarþjálfun hjá Precision Nutrition.</p>
                                     <p>Tinna hefur mikla reynslu af því að telja macros og gerði það í nokkur ár undir leiðsögn þjálfara og svo sjálf. Hún æfði handbolta í um 20 ár og hefur einnig komið að þjálfun þar.</p>
@@ -714,10 +746,10 @@
                 <!-- Header -->
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        Veldu þína Þjálfun
+                        Veldu þína þjálfun
                     </h2>
                     <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                        Tvær leiðir í boði, sama markmið: Þinn árangur
+                        Tvær leiðir í boði, sama markmið: þinn árangur
                     </p>
                 </div>
 
@@ -742,7 +774,7 @@
                         <!-- Price Display -->
                         <div class="price-box relative rounded-xl p-8 mb-6 border border-white/5">
                             <div class="relative z-10">
-                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Byrjar á</div>
+                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Verð frá</div>
                                 <div class="flex items-baseline gap-2 mb-1">
                                     <span class="text-5xl font-bold text-white">23.990</span>
                                     <span class="text-2xl text-gray-300">kr</span>
@@ -758,7 +790,7 @@
                                 <div class="option-card rounded-xl p-5">
                                     <div class="flex justify-between items-center">
                                 <div>
-                                            <div class="text-white font-semibold text-lg mb-1">3 Mánuðir</div>
+                                            <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">27.990 kr/mán</div>
@@ -769,7 +801,7 @@
                                 <div class="option-card featured rounded-xl p-5">
                                     <div class="flex justify-between items-center">
                                 <div>
-                                            <div class="text-white font-semibold text-lg mb-1">6 Mánuðir</div>
+                                            <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">23.990 kr/mán</div>
@@ -809,7 +841,7 @@
                         <!-- Price Display -->
                         <div class="price-box relative rounded-xl p-8 mb-6 border border-white/5">
                             <div class="relative z-10">
-                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Byrjar á</div>
+                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Verð frá</div>
                                 <div class="flex items-baseline gap-2 mb-1">
                                     <span class="text-5xl font-bold text-white">31.990</span>
                                     <span class="text-2xl text-gray-300">kr</span>
@@ -825,7 +857,7 @@
                                 <div class="option-card rounded-xl p-5">
                                     <div class="flex justify-between items-center">
                                 <div>
-                                            <div class="text-white font-semibold text-lg mb-1">3 Mánuðir</div>
+                                            <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">34.990 kr/mán</div>
@@ -836,7 +868,7 @@
                                 <div class="option-card featured rounded-xl p-5">
                                     <div class="flex justify-between items-center">
                                 <div>
-                                            <div class="text-white font-semibold text-lg mb-1">6 Mánuðir</div>
+                                            <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">31.990 kr/mán</div>
@@ -893,13 +925,13 @@
         <!-- Start Journey Section -->
         <section id="start" class="py-24 bg-brand-dark">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Tíminn er Núna - Byrjaðu Þína Vegferð</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Tíminn er núna - Byrjaðu þína vegferð</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300 fade-in-up stagger-1">
                     Árangur er ekki tilviljun, hann kemur með skipulagi, aga og stöðugleika. Þeir sem ná markmiðunum sínum hafa áætlun sem þeir fylgja, þrátt fyrir hindranir. Ert þú tilbúin/n að taka ábyrgð á eigin heilsu?
                 </p>
                  <div class="mt-10 fade-in-up stagger-2">
                     <a href="#contact" class="bg-[var(--brand-accent)] text-white px-10 py-4 rounded-full font-semibold text-xl btn-accent">
-                        Ég er Tilbúin/n!
+                        Ég er tilbúin/n!
                     </a>
             </div>
                 </div>
@@ -909,7 +941,7 @@
         <section id="faq" class="py-24 bg-brand-mid-blue">
             <div class="container mx-auto px-6 max-w-3xl">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Algengar Spurningar</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Algengar spurningar</h2>
                     </div>
                 <div class="space-y-4">
                     <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-1 border border-white/10 overflow-hidden">
@@ -1015,13 +1047,13 @@
         <section id="contact" class="py-24 bg-brand-dark">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hafa Samband</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hafa samband</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Viltu bóka Zoom fund eða senda okkur fyrirspurn?</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
                     <!-- Form -->
                     <div class="lg:col-span-3 bg-brand-mid-blue rounded-xl shadow-lg p-8 border border-white/10 fade-in-left stagger-2">
-                         <h3 class="text-2xl font-bold text-white mb-6">Bóka Zoom Fund eða Senda Fyrirspurn</h3>
+                         <h3 class="text-2xl font-bold text-white mb-6">Bóka Zoom fund eða senda fyrirspurn</h3>
                         <form action="#" class="space-y-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-300">Nafn</label>
@@ -1050,21 +1082,21 @@
                             </div>
                             <div>
                                 <button type="submit" class="w-full bg-[var(--brand-accent)] text-white py-3 px-6 rounded-full font-semibold text-lg btn-accent">
-                                    Senda Fyrirspurn
+                                    Senda fyrirspurn
                         </button>
                         </div>
                         </form>
                     </div>
                     <!-- Contact Info -->
                     <div class="lg:col-span-2 bg-brand-mid-blue rounded-xl shadow-lg p-8 border border-white/10 fade-in-right stagger-3 flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-6">Kaupa Þjálfun</h3>
+                        <h3 class="text-2xl font-bold text-white mb-6">Kaupa þjálfun</h3>
                         <div class="space-y-6">
                             <div class="flex items-start gap-4">
                                 <div class="mt-1 flex-shrink-0 w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center">
                                     <svg class="w-6 h-6 text-[var(--brand-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-lg text-white">Kaupa Beint</h4>
+                                    <h4 class="font-semibold text-lg text-white">Kaupa beint</h4>
                                     <p class="text-gray-400">Þú getur keypt 3 eða 6 mánaða þjálfun beint á síðunni.</p>
                                     <a href="#program" class="text-[var(--brand-accent)] hover:underline">Skoða verðskrá</a>
                                 </div>
@@ -1080,7 +1112,7 @@
                             </div>
                         </div>
                          <div class="mt-auto pt-8">
-                             <h4 class="text-lg font-semibold text-white mb-4">Fylgdu Okkur</h4>
+                             <h4 class="text-lg font-semibold text-white mb-4">Fylgdu okkur</h4>
                              <div class="flex justify-center lg:justify-start">
                                  <a href="https://www.instagram.com/simplesuccess.io/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-brand-dark hover:bg-[var(--brand-accent)] rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Fylgdu okkur á Instagram">
                                      <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -1111,7 +1143,7 @@
                     <h4 class="text-lg font-semibold text-white mb-6" id="footer-quick-links">Fljótlegar tenglar</h4>
                     <nav aria-labelledby="footer-quick-links">
                         <ul class="space-y-3">
-                            <li><a href="#method" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Aðferðin</a></li>
+                            <li><a href="#method" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Ferlið</a></li>
                             <li><a href="#program" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Þjálfun</a></li>
                             <li><a href="#testimonials" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Árangur</a></li>
                             <li><a href="#faq" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Spurningar</a></li>
