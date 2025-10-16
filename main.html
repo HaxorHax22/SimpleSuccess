@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="is" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simple Success | Fjarþjálfun & Næring</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+    :root {
+        --brand-dark-blue: #151F28; /* Main Background */
+        --brand-mid-blue: #1E2A35; /* Card Background */
+        --brand-light-text: #FFFFF5; /* White from logo */
+        --brand-gray-text: #8B949E; /* Secondary Text */
+        --brand-accent: #BCB0A7; /* Warm Beige Accent */
+        --brand-accent-hover: #A69B8F; /* Darker beige for hover */
+    }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        background-color: var(--brand-dark-blue);
+        color: var(--brand-light-text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: auto;
+        scroll-behavior: smooth;
+    }
+    
+    /* Ensure all containers fit within viewport */
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Ensure sections don't trap users */
+    section {
+        position: relative;
+        overflow: visible;
+        min-height: auto;
+        height: auto;
+    }
+
+    /* Fix all containers to prevent scroll trapping */
+    .container {
+        overflow: visible;
+        position: relative;
+    }
+
+    /* Ensure grids don't create scroll issues */
+    .grid {
+        overflow: visible;
+        position: relative;
+    }
+
+    /* Fix all cards and content containers */
+    .card, .bg-brand-mid-blue, .bg-brand-dark {
+        overflow: visible;
+        position: relative;
+    }
+    
+    /* Smooth scrolling for anchor links */
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    /* Prevent horizontal overflow on mobile */
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* Fix mobile touch scrolling issues */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent scroll traps on mobile for interactive elements */
+    button, a, input, select, textarea {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Ensure buttons don't interfere with scrolling */
+    .btn-accent, .cta-button, .expand-btn {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    /* Mobile-specific fixes */
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Ensure text doesn't overflow */
+        h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Fix any potential overflow issues */
+        .grid {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        /* Ensure images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Reduce section padding on mobile */
+        section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+        
+        /* Ensure smooth scrolling and prevent getting stuck */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* Prevent overflow issues */
+        section {
+            min-height: auto;
+            overflow: visible;
+            height: auto;
+        }
+
+        /* Ensure all containers are scroll-friendly on mobile */
+        .container, .grid, .card {
+            overflow: visible;
+            position: relative;
+        }
+
+        /* Fix any potential scroll traps - only apply to body and html */
+        html, body {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Ensure smooth scrolling on mobile */
+        html, body {
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+        }
+        
+        /* Prevent scroll traps in sections */
+        section {
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+    
+    .hero-section {
+        perspective: 1000px;
+    }
+
+    .hero-background {
+        transform-style: preserve-3d;
+    }
+
+    /* Ken Burns Effect */
+    .ken-burns-effect {
+        animation: kenBurns 25s ease-in-out infinite alternate;
+    }
+    
+    @keyframes kenBurns {
+        0% { transform: scale(1.1) translate(0, 0); }
+        100% { transform: scale(1.25) translate(-3%, -3%); }
+    }
+    
+    /* Header Styles */
+    #header-nav a { color: var(--brand-light-text); }
+    #header.header-scrolled {
+        background: rgba(13, 17, 23, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+     #header.header-scrolled #header-nav a {
+        color: var(--brand-light-text);
+    }
+    #header.header-scrolled .text-white {
+        color: var(--brand-light-text) !important;
+    }
+
+
+    /* Animation Classes */
+    .fade-in-up, .fade-in-left, .fade-in-right {
+            opacity: 0;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    .fade-in-up { transform: translateY(40px); }
+    .fade-in-left { transform: translateX(-40px); }
+    .fade-in-right { transform: translateX(40px); }
+        
+    .fade-in-up.show, .fade-in-left.show, .fade-in-right.show {
+            opacity: 1;
+        transform: translate(0, 0);
+        }
+        
+        /* Staggered Animation Delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        .hover-glow:hover {
+        box-shadow: 0 0 50px rgba(188, 176, 167, 0.25);
+    }
+
+        .pricing-card {
+            background: var(--brand-mid-blue);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: visible;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(188, 176, 167, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(188, 176, 167, 0.1);
+        }
+
+        .price-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(188, 176, 167, 0.1) 0%, rgba(188, 176, 167, 0.05) 100%);
+            border-radius: 1rem;
+        }
+
+        .pricing-options {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.4s ease,
+                        margin-top 0.4s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .pricing-options.expanded {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            overflow: visible;
+        }
+
+        .option-card {
+            background: rgba(21, 31, 40, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            overflow: visible;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: rgba(188, 176, 167, 0.4);
+            background: rgba(21, 31, 40, 0.8);
+            transform: translateX(4px);
+        }
+
+        .option-card.featured {
+            background: linear-gradient(135deg, rgba(188, 176, 167, 0.15) 0%, rgba(188, 176, 167, 0.05) 100%);
+            border: 1px solid rgba(188, 176, 167, 0.3);
+        }
+
+        .option-card.featured:hover {
+            border-color: rgba(188, 176, 167, 0.5);
+            background: linear-gradient(135deg, rgba(188, 176, 167, 0.2) 0%, rgba(188, 176, 167, 0.1) 100%);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+            box-shadow: 0 4px 14px 0 rgba(188, 176, 167, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 6px 20px rgba(188, 176, 167, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .expand-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            border-color: rgba(188, 176, 167, 0.5);
+            background: rgba(188, 176, 167, 0.05);
+        }
+
+        .chevron {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+            box-shadow: 0 2px 8px rgba(188, 176, 167, 0.3);
+        }
+
+        /* Ensure pricing section doesn't trap users */
+        #program {
+            overflow: visible;
+            position: relative;
+        }
+
+        #program .grid {
+            overflow: visible;
+        }
+
+        #program .pricing-card {
+            min-height: auto;
+            overflow: visible;
+        }
+
+    /* Refined Button Hover Effects */
+    .btn-accent {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25); /* Base shadow */
+    }
+    .btn-accent:hover {
+        transform: translateY(-4px) scale(1.03);
+        background-color: var(--brand-accent-hover);
+        box-shadow: 0 10px 20px rgba(188, 176, 167, 0.2), 0 6px 6px rgba(188, 176, 167, 0.23); /* Glow effect */
+    }
+    .btn-accent:active {
+        transform: translateY(-1px) scale(1.01);
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Shimmer Effect for Buttons - REMOVED */
+    
+    /* Mobile Menu */
+        #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        background-color: var(--brand-dark-blue);
+        touch-action: manipulation;
+        -webkit-overflow-scrolling: touch;
+    }
+    #mobile-menu.show {
+        transform: translateX(0);
+    }
+    .hamburger-line { background-color: var(--brand-light-text); transition: all 0.3s ease-in-out; }
+    #mobile-menu-button.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    #mobile-menu-button.active span:nth-child(2) { opacity: 0; }
+    #mobile-menu-button.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+    /* FAQ Accordion */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    
+    /* Smooth FAQ animations */
+    details[open] .faq-content {
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    details:not([open]) .faq-content {
+        animation: slideUp 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+            max-height: 0;
+        }
+    }
+    
+    /* Smooth icon rotation */
+    .faq-icon {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    details[open] .faq-icon {
+        transform: rotate(180deg);
+    }
+    
+    /* Smooth hover effects with blue glow */
+    .faq-item {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    .faq-item:hover .faq-icon {
+        color: #BCB0A7;
+    }
+    
+    /* Subtle beige glow effect for FAQ items */
+    .faq-item:hover {
+        box-shadow: 0 0 15px rgba(188, 176, 167, 0.15), 0 0 30px rgba(188, 176, 167, 0.08), 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+    
+    /* Testimonials Carousel */
+    .carousel-container {
+        width: 100%;
+        position: relative;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #testimonial-carousel {
+        display: flex;
+        width: 300%; /* 3 slides = 300% */
+    }
+    
+    #testimonial-carousel > div {
+        width: 33.333333%; /* Each slide takes 1/3 of the total width */
+        flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-light">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-1 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 z-50">
+                <img src="img/logo_nobackground.png" alt="Simple Success Logo" class="w-16 h-16 object-contain">
+                <span class="text-xl font-bold text-white hidden md:block">Simple Success</span>
+            </a>
+            
+            <nav id="header-nav" class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="hover:text-[var(--brand-accent)] transition-colors">Um okkur</a>
+                <a href="#method" class="hover:text-[var(--brand-accent)] transition-colors">Ferlið</a>
+                <a href="#program" class="hover:text-[var(--brand-accent)] transition-colors">Þjálfun</a>
+                <a href="#testimonials" class="hover:text-[var(--brand-accent)] transition-colors">Árangur</a>
+                <a href="#start" class="hover:text-[var(--brand-accent)] transition-colors">Byrjaðu núna</a>
+                <a href="#faq" class="hover:text-[var(--brand-accent)] transition-colors">Spurningar</a>
+                <a href="#contact" class="bg-[var(--brand-accent)] text-white px-5 py-2 rounded-full font-semibold btn-accent">Hafa samband</a>
+            </nav>
+            
+            <button id="mobile-menu-button" class="md:hidden p-2 z-50">
+                <div class="w-6 h-6 flex flex-col justify-around">
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                    <span class="hamburger-line block w-full h-0.5"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 right-0 w-full h-full z-40">
+        <nav class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-medium">
+            <a href="#about" class="text-gray-200 hover:text-[var(--brand-accent)]">Um okkur</a>
+            <a href="#method" class="text-gray-200 hover:text-[var(--brand-accent)]">Ferlið</a>
+            <a href="#program" class="text-gray-200 hover:text-[var(--brand-accent)]">Þjálfun</a>
+            <a href="#testimonials" class="text-gray-200 hover:text-[var(--brand-accent)]">Árangur</a>
+            <a href="#start" class="text-gray-200 hover:text-[var(--brand-accent)]">Byrjaðu núna</a>
+            <a href="#faq" class="text-gray-200 hover:text-[var(--brand-accent)]">Spurningar</a>
+            <a href="#contact" class="mt-4 bg-[var(--brand-accent)] text-white px-8 py-3 rounded-full btn-accent">Hafa samband</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center text-center overflow-hidden hero-section">
+            <div id="hero-bg" class="absolute inset-0 z-0 hero-background">
+                <img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?q=80&w=2070&auto=format&fit=crop" alt="Gym and Fitness Background" class="w-full h-full object-cover ken-burns-effect">
+            </div>
+            <div class="absolute inset-0 bg-black/70 z-10"></div>
+            <div class="container mx-auto px-6 relative z-20">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight fade-in-up">
+                    Þín vegferð að <span class="text-[var(--brand-accent)]">betri heilsu</span>
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-200 fade-in-up stagger-1">
+                    Sérsniðin fjar- og næringarþjálfun sem skilar raunverulegum árangri. Við fylgjum þér alla leið.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#program" class="w-full sm:w-auto bg-[var(--brand-accent)] text-white px-8 py-3 rounded-full font-semibold text-lg fade-in-up stagger-2 btn-accent">
+                    Skoða þjálfun
+                </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method Section -->
+        <section id="method" class="py-24 bg-brand-mid-blue">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Okkar aðferð: einföld skref, raunverulegur árangur</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Við höfum einfaldað ferlið svo þú getir einbeitt þér að því sem skiptir máli.</p>
+                </div>
+                
+                <!-- Timeline Container -->
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Connecting Line -->
+                    <div class="hidden md:block absolute top-10 left-1/2 w-0.5 h-full -ml-px bg-gray-700/30" data-rellax-speed="1"></div>
+                    
+                    <!-- Step 1: Left -->
+                    <div class="relative mb-16 md:mb-24 fade-in-left stagger-1">
+                        <div class="md:flex items-center md:justify-end md:mr-[55%]">
+                            <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">1. Skráning & upphaflegur netfundur</h3>
+                                <p class="text-gray-400">Skráir þig í þjálfun og við byrjum á að taka netfund þar sem við förum yfir stöðuna, kynnumst þér aðeins betur og útskýrum hvernig allt ferlið virkar.</p>
+                    </div>
+                            </div>
+                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
+                            </div>
+
+                    <!-- Step 2: Right -->
+                    <div class="relative mb-16 md:mb-24 fade-in-right stagger-2">
+                        <div class="md:flex items-center md:justify-start md:ml-[55%]">
+                             <div class="md:w-full md:text-left bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">2. Spurningalistinn</h3>
+                                <p class="text-gray-400">Við kynnumst þér enn betur. Þú svarar ítarlegum spurningum um þinn lífsstíl, matarvenjur, æfingar og markmið til að við getum hannað fullkomið plan fyrir þig.</p>
+                        </div>
+                            </div>
+                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
+                            </div>
+
+                    <!-- Step 3: Left -->
+                    <div class="relative mb-16 md:mb-24 fade-in-left stagger-3">
+                        <div class="md:flex items-center md:justify-end md:mr-[55%]">
+                             <div class="md:w-full md:text-right bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">3. Sérsniðin áætlun & stuðningur</h3>
+                                <p class="text-gray-400">Byggt á þínum svörum búum við til matar- og æfingaplan sem er 100% sérsniðið að þér. Allt er aðgengilegt í einföldu appi og við erum með þér alla leið.</p>
+                        </div>
+                            </div>
+                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
+                            </div>
+
+                    <!-- Step 4: Right -->
+                    <div class="relative fade-in-right stagger-4">
+                        <div class="md:flex items-center md:justify-start md:ml-[55%]">
+                             <div class="md:w-full md:text-left bg-brand-dark p-8 rounded-xl shadow-2xl border border-white/10 hover-lift hover-glow">
+                                <h3 class="text-2xl font-bold mb-3 text-[var(--brand-accent)]">4. Fylgni & endurskoðun</h3>
+                                <p class="text-gray-400">Þú skilar vikulega inn check-in þar sem við tökum stöðuna, förum yfir hvernig gengur og breytum og bætaum það sem þarf hverju sinni.Tökum svo annan netfund eftir 6 vikur til að fara yfir stöðuna, endurskoða markmið ef þarf og gera breytingar á planinu til að tryggja besta mögulega árangur.</p>
+                        </div>
+                        </div>
+                         <div class="hidden md:block absolute top-1/2 left-1/2 -mt-4 -ml-4 w-8 h-8 rounded-full bg-[var(--brand-accent)] border-4 border-brand-mid-blue shadow-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-24 bg-brand-mid-blue">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hver erum við</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Simple Success byggir á sameinuðum grunni þekkingar, reynslu og krafta okkar tveggja.</p>
+                </div>
+                
+                <div class="max-w-6xl mx-auto space-y-16">
+                    <!-- Kjartan -->
+                    <div class="fade-in-left stagger-2">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <!-- Image -->
+                            <div class="order-2 lg:order-1">
+                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
+                                    <img src="img/about_Kjartan.png" alt="Kjartan" class="w-full h-full object-cover">
+                    </div>
+                            </div>
+                            <!-- Text -->
+                            <div class="order-1 lg:order-2">
+                                <h3 class="text-3xl font-bold text-white mb-3">Kjartan</h3>
+                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Styrktarþjálfari & íþróttakennari</p>
+                                <div class="text-gray-300 leading-relaxed space-y-4">
+                                    <p>Kjartan er menntaður íþróttakennari og bráðatæknir. Hann hefur mikla reynslu af styrktarþjálfun, bæði búinn að þjálfa almenning og íþróttamenn.</p>
+                                    <p>Kjartan hefur verið t.d. styrktarþjálfari hjá knattspyrnuliði Stjörnunnar, Val og Breiðabik. Sjálfur æfði hann körfubolta og frjálsar á yngri árum og hefur því mikla reynslu af því að vera þjálfari og iðkandi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tinna -->
+                    <div class="fade-in-right stagger-3">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <!-- Text -->
+                            <div class="order-1">
+                                <h3 class="text-3xl font-bold text-white mb-3">Tinna</h3>
+                                <p class="text-[var(--brand-accent)] font-semibold text-lg mb-6">Hjúkrunarfræðingur & næringarþjálfari</p>
+                                <div class="text-gray-300 leading-relaxed space-y-4">
+                                    <p>Tinna er menntaður hjúkrunarfræðingur, sjúkraliði og sjúkraflutningamaður. Hún er einnig að taka L1 næringarþjálfun hjá Precision Nutrition.</p>
+                                    <p>Tinna hefur mikla reynslu af því að telja macros og gerði það í nokkur ár undir leiðsögn þjálfara og svo sjálf. Hún æfði handbolta í um 20 ár og hefur einnig komið að þjálfun þar.</p>
+                                </div>
+                            </div>
+                            <!-- Image -->
+                            <div class="order-2">
+                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face" alt="Tinna" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-brand-dark">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Umsagnir</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Hvað segja viðskiptavinir okkar um árangurinn sinn.</p>
+                </div>
+                
+                <!-- Carousel Container -->
+                <div class="relative max-w-6xl mx-auto">
+                    <!-- Carousel Wrapper -->
+                    <div class="carousel-container overflow-hidden rounded-2xl">
+                        <div id="testimonial-carousel" class="flex transition-transform duration-500 ease-in-out">
+                            <!-- Testimonial 1 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Ég byrjaði í Simple Success í júlí með það markmið að léttast um 10 kg á 12 vikum. Ferlið hefur verið bæði krefjandi og gefandi. Það sem stendur upp úr fyrir mig er hversu einfalt og agað mataræðið er. Það er ekki eins og ég hafði ímyndað mér - ekki hungur eða þjáningar. Þjálfararnir eru alltaf til staðar og svara öllum spurningum."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Anna Jónsdóttir</cite>
+                                            <p class="text-gray-400 text-sm">-10kg á 3 mánuðum</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 2 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Ég hafði aldrei hugsað að ég gæti náð svona góðum árangri. Næringarþjálfunin hjá Simple Success breytti lífsstílnum mínum algjörlega. Ég er orðin öruggari og heilbrigðari en nokkru sinni fyrr. Það er ótrúlegt hvað það er gott að fá sérsniðið matarplan sem byggir á þeim mat sem mér líkar."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Sigríður Magnúsdóttir</cite>
+                                            <p class="text-gray-400 text-sm">-15kg á 6 mánuðum</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 3 -->
+                            <div class="w-full flex-shrink-0">
+                                <div class="bg-brand-mid-blue rounded-2xl p-8 md:p-12 hover-lift hover-glow mx-4 md:mx-0">
+                                    <div class="text-center">
+                                        <blockquote class="text-lg text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto">
+                                            "Bestu ákvörðunin sem ég hef tekið! Simple Success hjálpaði mér ekki aðeins að missa þyngd heldur að byggja upp góðar venjur sem ég held áfram með. Þjálfararnir eru sérstaklega góðir í að fylgja eftir og svara öllum spurningum. Ég mæli með þeim öllum sem vilja breyta lífsstílnum sínum."
+                                        </blockquote>
+                                        <div class="max-w-md mx-auto">
+                                            <cite class="text-white font-semibold text-lg">Guðmundur Pétursson</cite>
+                                            <p class="text-gray-400 text-sm">-12kg á 4 mánuðum</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button id="prev-testimonial" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    
+                    <button id="next-testimonial" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover-lift z-10">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dots Indicator -->
+                    <div class="flex justify-center mt-8 space-x-3">
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-[var(--brand-accent)] transition-all duration-300 hover:scale-110" data-slide="0"></button>
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300 hover:scale-110" data-slide="1"></button>
+                        <button class="testimonial-dot w-4 h-4 md:w-3 md:h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all duration-300 hover:scale-110" data-slide="2"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Section -->
+        <section id="program" class="py-20 px-4 bg-brand-dark">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                        Veldu þína þjálfun
+                    </h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                        Tvær leiðir í boði, sama markmið: þinn árangur
+                    </p>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    
+                    <!-- Nutrition Coaching -->
+                    <div class="pricing-card rounded-2xl p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">Næringarþjálfun</h3>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Uppskriftir, fræðsluefni, vikulegt check-in, app sem heldur utan um allt, aðgangur að þjálfar 24/7 og venjur.
+                            </p>
+                            <div class="text-sm text-gray-400 mb-2">
+                                <span class="text-[var(--brand-accent)]">•</span> Val á milli sérsniðið matarplan eða útreiknuð næringargildi
+                            </div>
+                            <div class="text-sm text-gray-400">
+                                <span class="text-[var(--brand-accent)]">•</span> Ekki æfingaplan innifalið
+                            </div>
+                        </div>
+
+                        <!-- Price Display -->
+                        <div class="price-box relative rounded-xl p-8 mb-6 border border-white/5">
+                            <div class="relative z-10">
+                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Verð frá</div>
+                                <div class="flex items-baseline gap-2 mb-1">
+                                    <span class="text-5xl font-bold text-white">23.990</span>
+                                    <span class="text-2xl text-gray-300">kr</span>
+                                </div>
+                                <div class="text-gray-400">á mánuði</div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Options (Hidden) -->
+                        <div id="nutrition-options" class="pricing-options">
+                            <div class="space-y-3">
+                                <!-- 3 Months -->
+                                <div class="option-card rounded-xl p-5">
+                                    <div class="flex justify-between items-center">
+                                <div>
+                                            <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
+                                            <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
+                                </div>
+                                        <div class="text-white font-bold text-xl">27.990 kr/mán</div>
+                            </div>
+                                </div>
+
+                                <!-- 6 Months (Featured) -->
+                                <div class="option-card featured rounded-xl p-5">
+                                    <div class="flex justify-between items-center">
+                                <div>
+                                            <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
+                                            <div class="text-gray-400 text-sm">Langtíma áætlun</div>
+                                </div>
+                                        <div class="text-white font-bold text-xl">23.990 kr/mán</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Expand Button -->
+                        <button onclick="toggleOptions('nutrition')" class="expand-btn w-full rounded-lg py-3 mt-6 text-gray-300 hover:text-white font-medium">
+                            <span class="flex items-center justify-center gap-2">
+                                <span id="nutrition-text">Sjá valmöguleika</span>
+                                <svg id="nutrition-chevron" class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <!-- CTA -->
+                        <a href="#contact" class="cta-button block text-center w-full py-4 rounded-xl text-white font-semibold mt-6">
+                            Byrja núna
+                        </a>
+                    </div>
+
+                    <!-- Remote Training -->
+                    <div class="pricing-card rounded-2xl p-8">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">Fjarþjálfun</h3>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Sérsniðið matarplan, uppskriftir, fræðsluefni, vikulegt check-in, app sem heldur utan um allt, aðgangur að þjálfar 24/7 og venjur.
+                            </p>
+                            <div class="text-sm text-gray-400">
+                                <span class="text-[var(--brand-accent)]">•</span> Æfingaplan innifalið
+                            </div>
+                        </div>
+
+                        <!-- Price Display -->
+                        <div class="price-box relative rounded-xl p-8 mb-6 border border-white/5">
+                            <div class="relative z-10">
+                                <div class="text-sm text-gray-400 mb-2 uppercase tracking-wide">Verð frá</div>
+                                <div class="flex items-baseline gap-2 mb-1">
+                                    <span class="text-5xl font-bold text-white">31.990</span>
+                                    <span class="text-2xl text-gray-300">kr</span>
+                                </div>
+                                <div class="text-gray-400">á mánuði</div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Options (Hidden) -->
+                        <div id="training-options" class="pricing-options">
+                            <div class="space-y-3">
+                                <!-- 3 Months -->
+                                <div class="option-card rounded-xl p-5">
+                                    <div class="flex justify-between items-center">
+                                <div>
+                                            <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
+                                            <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
+                                </div>
+                                        <div class="text-white font-bold text-xl">34.990 kr/mán</div>
+                            </div>
+                                </div>
+
+                                <!-- 6 Months (Featured) -->
+                                <div class="option-card featured rounded-xl p-5">
+                                    <div class="flex justify-between items-center">
+                                <div>
+                                            <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
+                                            <div class="text-gray-400 text-sm">Langtíma áætlun</div>
+                                </div>
+                                        <div class="text-white font-bold text-xl">31.990 kr/mán</div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+
+                        <!-- Expand Button -->
+                        <button onclick="toggleOptions('training')" class="expand-btn w-full rounded-lg py-3 mt-6 text-gray-300 hover:text-white font-medium">
+                            <span class="flex items-center justify-center gap-2">
+                                <span id="training-text">Sjá valmöguleika</span>
+                                <svg id="training-chevron" class="chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <!-- CTA -->
+                        <a href="#contact" class="cta-button block text-center w-full py-4 rounded-xl text-white font-semibold mt-6">
+                            Byrja núna
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-brand-mid-blue">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Árangurinn</h2>
+                     <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Myndir frá okkar fólki sem sýna raunverulegan árangur.</p>
+                </div>
+
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                    <!-- Image 1 -->
+                    <div class="fade-in-up stagger-1">
+                        <img src="arangur/4-4kg-3vikum.png" alt="4,4 kg á 3 vikum" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="fade-in-up stagger-2">
+                        <img src="arangur/Árangur.png" alt="Árangur" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                        </div>
+                    <!-- Image 3 -->
+                    <div class="fade-in-up stagger-3">
+                        <img src="arangur/Copy of Árangur (1).png" alt="Árangur" class="w-full h-auto object-contain rounded-xl shadow-lg hover-lift hover-glow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Journey Section -->
+        <section id="start" class="py-24 bg-brand-dark">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Tíminn er núna - Byrjaðu þína vegferð</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300 fade-in-up stagger-1">
+                    Árangur er ekki tilviljun, hann kemur með skipulagi, aga og stöðugleika. Þeir sem ná markmiðunum sínum hafa áætlun sem þeir fylgja, þrátt fyrir hindranir. Ert þú tilbúin/n að taka ábyrgð á eigin heilsu?
+                </p>
+                 <div class="mt-10 fade-in-up stagger-2">
+                    <a href="#contact" class="bg-[var(--brand-accent)] text-white px-10 py-4 rounded-full font-semibold text-xl btn-accent">
+                        Ég er tilbúin/n!
+                    </a>
+            </div>
+                </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-brand-mid-blue">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Algengar spurningar</h2>
+                    </div>
+                <div class="space-y-4">
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-1 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Get ég ekki keypt einn stakan mánuð til að prófa?</span>
+                            <span class="faq-icon text-[var(--brand-accent)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Nei því miður, breytingar á venjum taka tíma og það tekur tíma að byggja upp þennan grunn sem þarf til að ná árangri. Við teljum okkur geta náð góðum árangri með þér á þremur mánuðum.</p>
+                    </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-2 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                           <span>Get ég sagt upp áskriftinni hvenær sem er?</span>
+                           <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Það eru allir skuldbundnir til að taka 3 mánuði í upphafi, þar sem við vitum að það tekur tíma að aðlagast breyttum venjum og ná árangri. Eftir það getur þú keypt stakan mánuð, þrjá, sex eða tólf mánuði og ert skuldbundin við þá áskrift sem þú velur. Ef þú nærð engum árangri og við erum ekki að tengja saman - þá að sjálfsögðu skoðum við hvað við getum gert í því.</p>
+                </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-3 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Hvað er innifalið í áskriftinni?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <ul class="text-gray-400 leading-relaxed space-y-2">
+                                <li>• Matarplan</li>
+                                <li>• Lyftingar/æfingaplan sem byggir á þínum markmiðum og getu</li>
+                                <li>• Breytingar á daglegum venjum sem styðja við langtíma árangur</li>
+                                <li>• Vikulegt check-in, stuðnignur og aðhald</li>
+                                <li>• App með öllum æfingum, leiðbeiningum og upplýsingum</li>
+                                <li>• Aðgangur að þjálfara alla daga vikunnar</li>
+                        </ul>
+                    </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-4 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Hvað er check-in?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Check-in er vikulegt stöðumat, þar sem þú skilar inn myndum, mælingum og ég fer yfir vikuna með þér, hvernig þér gekk að fylgja æfingaplani, matarplani og venjum. Förum yfir árangur vikunnar og skoðum hvort það þurfi að gera einhverjar breytingar.</p>
+                </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-5 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Þarf ég að æfa alla daga vikunnar til að ná árangri?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Nei alls ekki. Við sérsníðum æfingaplan eftir þínum markmiðum sem passar inni í þitt líf. Það þarf enginn að mæta í líkamsrækt daglega til að ná árangri.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-6 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Ég er með fæðuofnæmi, get ég samt skráð mig í þjálfun?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Já að sjálfsögðu, við tökum gott spjall í upphafi og við setjum upp matarplan með þitt fæðuofnæmi í huga.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-7 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Get ég skráð mig í þjálfun þó ég búi erlendis?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Já það er hægt að vera í þjálfun hvar sem er í heiminum. Þjálfunin fer að mestu leyti fram í gegnum netið.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item bg-brand-dark rounded-lg group fade-in-up stagger-8 border border-white/10 overflow-hidden">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer text-lg text-white p-6 hover:bg-white/5 transition-all duration-300">
+                            <span>Ef ég skrái mig í dag, hvenær get ég byrjað?</span>
+                             <span class="faq-icon text-[var(--brand-accent)]">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="faq-content px-6 pb-8 pt-2">
+                            <p class="text-gray-400 leading-relaxed">Eftir að þú hefur skráð þig í þjálfun hjá okkur, þá ferðu í gegnum ákveðið ferli þar sem þú meðal annars svarar spurningarlista, við setjum markmið fyrir næstu þrjá mánuði og svo færðu matar- og æfingaplan innan þriggja sólarhringa.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-brand-dark">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in-up text-white">Hafa samband</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400 fade-in-up stagger-1">Viltu bóka Zoom fund eða senda okkur fyrirspurn?</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
+                    <!-- Form -->
+                    <div class="lg:col-span-3 bg-brand-mid-blue rounded-xl shadow-lg p-8 border border-white/10 fade-in-left stagger-2">
+                         <h3 class="text-2xl font-bold text-white mb-6">Bóka Zoom fund eða senda fyrirspurn</h3>
+                        <form action="#" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300">Nafn</label>
+                                <input type="text" name="name" id="name" required placeholder="Jón Jónsson" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
+                        </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300">Netfang</label>
+                                <input type="email" name="email" id="email" required placeholder="jon@mail.com" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
+                    </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-300">Símanúmer</label>
+                                <input type="tel" name="phone" id="phone" placeholder="123-4567" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
+                        </div>
+                            <div>
+                                <label for="purpose" class="block text-sm font-medium text-gray-300">Hvað viltu gera?</label>
+                                <select name="purpose" id="purpose" required class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
+                                    <option value="">Veldu valkost</option>
+                                    <option value="zoom">Bóka Zoom fund</option>
+                                    <option value="inquiry">Senda fyrirspurn</option>
+                                    <option value="both">Bæði</option>
+                                </select>
+                    </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300">Skilaboð</label>
+                                <textarea name="message" id="message" rows="4" placeholder="Segðu okkur hvað þú vilt ræða eða spyrja um..." class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-[var(--brand-accent)] text-white py-3 px-6 rounded-full font-semibold text-lg btn-accent">
+                                    Senda fyrirspurn
+                        </button>
+                        </div>
+                        </form>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-2 bg-brand-mid-blue rounded-xl shadow-lg p-8 border border-white/10 fade-in-right stagger-3 flex flex-col">
+                        <h3 class="text-2xl font-bold text-white mb-6">Kaupa þjálfun</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="mt-1 flex-shrink-0 w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-[var(--brand-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Kaupa beint</h4>
+                                    <p class="text-gray-400">Þú getur keypt 3 eða 6 mánaða þjálfun beint á síðunni.</p>
+                                    <a href="#program" class="text-[var(--brand-accent)] hover:underline">Skoða verðskrá</a>
+                                </div>
+                            </div>
+                             <div class="flex items-start gap-4">
+                                <div class="mt-1 flex-shrink-0 w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-[var(--brand-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.546-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Spurningar?</h4>
+                                    <p class="text-gray-400">Skoðaðu <a href="#faq" class="text-[var(--brand-accent)] hover:underline">svörin okkar</a> við algengum spurningum.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="mt-auto pt-8">
+                             <h4 class="text-lg font-semibold text-white mb-4">Fylgdu okkur</h4>
+                             <div class="flex justify-center lg:justify-start">
+                                 <a href="https://www.instagram.com/simplesuccess.io/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-brand-dark hover:bg-[var(--brand-accent)] rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Fylgdu okkur á Instagram">
+                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                     </svg>
+                                 </a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-mid-blue text-gray-400 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-16">
+            <!-- 4-Column Responsive Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                
+                <!-- Logo Column -->
+                <div class="flex justify-center lg:justify-center">
+                    <img src="img/logo_nobackground.png" alt="Simple Success Logo" class="w-36 h-36 lg:w-48 lg:h-48 object-contain" role="img" aria-label="Simple Success Logo">
+            </div>
+                
+                <!-- Quick Links Column -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6" id="footer-quick-links">Fljótlegar tenglar</h4>
+                    <nav aria-labelledby="footer-quick-links">
+                        <ul class="space-y-3">
+                            <li><a href="#method" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Ferlið</a></li>
+                            <li><a href="#program" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Þjálfun</a></li>
+                            <li><a href="#testimonials" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Árangur</a></li>
+                            <li><a href="#faq" class="hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Spurningar</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Contact Column -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6" id="footer-contact">Hafa samband</h4>
+                    <address class="not-italic">
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <a href="mailto:info@simplesuccess.is" class="text-sm hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">info@simplesuccess.is</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <a href="tel:+3541234567" class="text-sm hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">+354 123 4567</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-[var(--brand-accent)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span class="text-sm">Reykjavík, Ísland</span>
+                            </div>
+                        </div>
+                    </address>
+                </div>
+                
+                <!-- Social Media Column -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6" id="footer-social">Fylgdu okkur</h4>
+                    <nav aria-labelledby="footer-social">
+                        <div class="flex justify-center lg:justify-start">
+                            <a href="https://www.instagram.com/simplesuccess.io/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gray-700 hover:bg-[var(--brand-accent)] rounded-full flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50" aria-label="Fylgdu okkur á Instagram">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Bottom Copyright Bar -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">
+                    &copy; <span id="current-year"></span> Simple Success. Allur réttur áskilinn.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="skilmalar.html" class="text-gray-500 hover:text-white transition-colors duration-300 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] focus:ring-opacity-50 rounded">Skilmálar</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Parallax effect for hero background
+        const heroBg = document.getElementById('hero-bg');
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            heroBg.style.transform = `translate3d(0, ${scrollPosition * 0.4}px, 0)`;
+        });
+
+
+        // Header Scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = mobileMenu.querySelectorAll('a');
+
+            mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
+            mobileMenuButton.classList.toggle('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.classList.remove('active');
+            });
+        });
+
+        // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+        }, { threshold: 0.15 });
+        
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+        
+        // Footer Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Testimonials Carousel
+        const carousel = document.getElementById('testimonial-carousel');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function updateCarousel() {
+            if (carousel) {
+                // Since each slide is 33.333333% of the total width (300%)
+                // We need to translate by 33.333333% for each slide
+                carousel.style.transform = `translateX(-${currentSlide * 33.333333}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.remove('bg-gray-600');
+                        dot.classList.add('bg-[var(--brand-accent)]');
+                        } else {
+                        dot.classList.remove('bg-[var(--brand-accent)]');
+                        dot.classList.add('bg-gray-600');
+                    }
+                });
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Touch/Swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        let isDragging = false;
+
+        if (carousel) {
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                endX = e.touches[0].clientX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const diffX = startX - endX;
+                const threshold = 50; // Minimum swipe distance
+                
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) {
+                        // Swiped left - next slide
+                        nextSlide();
+                    } else {
+                        // Swiped right - previous slide
+                        prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Auto-play carousel (optional)
+        setInterval(nextSlide, 8000); // Change slide every 8 seconds
+        });
+        
+        // Pricing toggle function
+        function toggleOptions(type) {
+            const options = document.getElementById(`${type}-options`);
+            const text = document.getElementById(`${type}-text`);
+            const chevron = document.getElementById(`${type}-chevron`);
+            
+            if (options.classList.contains('expanded')) {
+                options.classList.remove('expanded');
+                text.textContent = 'Sjá valmöguleika';
+                chevron.classList.remove('rotated');
+            } else {
+                options.classList.add('expanded');
+                text.textContent = 'Fela valmöguleika';
+                chevron.classList.add('rotated');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
