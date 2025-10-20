@@ -476,6 +476,286 @@
         width: 33.333333%; /* Each slide takes 1/3 of the total width */
         flex-shrink: 0;
         }
+
+    /* Subscription Modal Styles */
+    .subscription-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        overflow-y: auto;
+        padding: 2rem 1rem;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .subscription-modal.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: var(--brand-mid-blue);
+        border-radius: 1rem;
+        max-width: 600px;
+        width: 100%;
+        padding: 2.5rem;
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: slideUp 0.3s ease-out;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        font-size: 2.5rem;
+        color: var(--brand-gray-text);
+        cursor: pointer;
+        line-height: 1;
+        padding: 0.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-close:hover {
+        color: var(--brand-accent);
+        transform: rotate(90deg);
+    }
+
+    .modal-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-details {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(21, 31, 40, 0.5);
+        border-radius: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-group label {
+        color: var(--brand-light-text);
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        background: var(--brand-dark-blue);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: var(--brand-light-text);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--brand-accent);
+        box-shadow: 0 0 0 3px rgba(188, 176, 167, 0.1);
+    }
+
+    .form-group input::placeholder {
+        color: var(--brand-gray-text);
+    }
+
+    .form-checkbox {
+        display: flex;
+        align-items: start;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-top: 0.1rem;
+        cursor: pointer;
+        accent-color: var(--brand-accent);
+        flex-shrink: 0;
+    }
+
+    .form-checkbox label {
+        color: var(--brand-gray-text);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        cursor: pointer;
+    }
+
+    .modal-submit-btn {
+        background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(188, 176, 167, 0.3);
+        margin-top: 0.5rem;
+    }
+
+    .modal-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(188, 176, 167, 0.4);
+    }
+
+    .modal-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .modal-submit-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Mobile Modal Adjustments */
+    @media (max-width: 768px) {
+        .subscription-modal {
+            padding: 1rem 0.5rem;
+        }
+
+        .modal-content {
+            padding: 1.5rem;
+            max-height: 95vh;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+    }
+
+    /* Mobile Program Section Optimizations */
+    @media (max-width: 768px) {
+        #program {
+            padding: 3rem 1rem;
+        }
+
+        #program h2 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        #program .pricing-card {
+            padding: 1.5rem;
+        }
+
+        #program .pricing-card h3 {
+            font-size: 1.5rem;
+        }
+
+        #program .pricing-card p {
+            font-size: 0.95rem;
+        }
+
+        #program .price-box {
+            padding: 1.5rem;
+        }
+
+        #program .price-box .text-5xl {
+            font-size: 2.5rem;
+        }
+
+        #program .option-card {
+            padding: 1rem;
+        }
+
+        #program .option-card .flex {
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        #program .option-card .text-xl {
+            font-size: 1.1rem;
+        }
+
+        #program .option-card .text-lg {
+            font-size: 1rem;
+        }
+
+        #program .cta-button,
+        #program .expand-btn {
+            font-size: 1rem;
+            padding: 0.875rem 1.5rem;
+        }
+
+        /* Ensure proper spacing on mobile */
+        #program .grid {
+            gap: 2rem;
+        }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 480px) {
+        #program h2 {
+            font-size: 1.75rem;
+        }
+
+        #program .pricing-card {
+            padding: 1.25rem;
+        }
+
+        #program .price-box .text-5xl {
+            font-size: 2rem;
+        }
+
+        #program .option-card {
+            padding: 0.875rem;
+        }
+    }
     </style>
 </head>
 <body class="bg-brand-dark text-brand-light">
@@ -787,22 +1067,24 @@
                         <div id="nutrition-options" class="pricing-options">
                             <div class="space-y-3">
                                 <!-- 3 Months -->
-                                <div class="option-card rounded-xl p-5">
+                                <div class="option-card rounded-xl p-5 cursor-pointer" onclick="openModal('nutrition-3-month')">
                                     <div class="flex justify-between items-center">
                                 <div>
                                             <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
+                                            <div class="text-[var(--brand-accent)] text-xs mt-1">Smelltu til að kaupa →</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">27.990 kr/mán</div>
                             </div>
                                 </div>
 
                                 <!-- 6 Months (Featured) -->
-                                <div class="option-card featured rounded-xl p-5">
+                                <div class="option-card featured rounded-xl p-5 cursor-pointer" onclick="openModal('nutrition-6-month')">
                                     <div class="flex justify-between items-center">
                                 <div>
                                             <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
+                                            <div class="text-[var(--brand-accent)] text-xs mt-1">Smelltu til að kaupa →</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">23.990 kr/mán</div>
                                     </div>
@@ -854,22 +1136,24 @@
                         <div id="training-options" class="pricing-options">
                             <div class="space-y-3">
                                 <!-- 3 Months -->
-                                <div class="option-card rounded-xl p-5">
+                                <div class="option-card rounded-xl p-5 cursor-pointer" onclick="openModal('training-3-month')">
                                     <div class="flex justify-between items-center">
                                 <div>
                                             <div class="text-white font-semibold text-lg mb-1">3 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Skammtíma áætlun</div>
+                                            <div class="text-[var(--brand-accent)] text-xs mt-1">Smelltu til að kaupa →</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">34.990 kr/mán</div>
                             </div>
                                 </div>
 
                                 <!-- 6 Months (Featured) -->
-                                <div class="option-card featured rounded-xl p-5">
+                                <div class="option-card featured rounded-xl p-5 cursor-pointer" onclick="openModal('training-6-month')">
                                     <div class="flex justify-between items-center">
                                 <div>
                                             <div class="text-white font-semibold text-lg mb-1">6 mánuðir</div>
                                             <div class="text-gray-400 text-sm">Langtíma áætlun</div>
+                                            <div class="text-[var(--brand-accent)] text-xs mt-1">Smelltu til að kaupa →</div>
                                 </div>
                                         <div class="text-white font-bold text-xl">31.990 kr/mán</div>
                             </div>
@@ -1125,6 +1409,320 @@
                 </div>
             </div>
         </section>
+
+        <!-- Subscription Modals -->
+        <!-- Nutrition 3 Month Modal -->
+        <div id="nutrition-3-month-modal" class="subscription-modal" onclick="closeModalOnOverlay(event, 'nutrition-3-month')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeModal('nutrition-3-month')">&times;</button>
+                
+                <div class="modal-header">
+                    <h3 class="text-2xl font-bold text-white mb-2">Næringarþjálfun - 3 mánuðir</h3>
+                    <p class="text-[var(--brand-accent)] text-xl font-semibold">27.990 kr/mán</p>
+                </div>
+
+                <div class="modal-details">
+                    <h4 class="text-lg font-semibold text-white mb-3">Innifalið:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Val á milli sérsniðið matarplan eða útreiknuð næringargildi</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Uppskriftir og fræðsluefni</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Vikulegt check-in og stuðningur</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>App sem heldur utan um allt</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Aðgangur að þjálfara 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Venjur og árangursmiðað ferli</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-400 text-sm mt-4 italic">Athugið: Æfingaplan ekki innifalið</p>
+                </div>
+
+                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'nutrition-3-month')">
+                    <div class="form-group">
+                        <label for="nutrition-3-name">Fullt nafn *</label>
+                        <input type="text" id="nutrition-3-name" name="name" required placeholder="Jón Jónsson">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-3-kennitala">Kennitala *</label>
+                        <input type="text" id="nutrition-3-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-3-email">Netfang *</label>
+                        <input type="email" id="nutrition-3-email" name="email" required placeholder="jon@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-3-phone">Símanúmer *</label>
+                        <input type="tel" id="nutrition-3-phone" name="phone" required placeholder="123-4567">
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="nutrition-3-terms" name="terms" required>
+                        <label for="nutrition-3-terms">
+                            Ég samþykki greiðsluskilmála *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        Halda áfram í greiðslu
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Nutrition 6 Month Modal -->
+        <div id="nutrition-6-month-modal" class="subscription-modal" onclick="closeModalOnOverlay(event, 'nutrition-6-month')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeModal('nutrition-6-month')">&times;</button>
+                
+                <div class="modal-header">
+                    <h3 class="text-2xl font-bold text-white mb-2">Næringarþjálfun - 6 mánuðir</h3>
+                    <p class="text-[var(--brand-accent)] text-xl font-semibold">23.990 kr/mán</p>
+                    <span class="inline-block bg-[var(--brand-accent)] text-white text-xs px-3 py-1 rounded-full mt-2">Vinsælast</span>
+                </div>
+
+                <div class="modal-details">
+                    <h4 class="text-lg font-semibold text-white mb-3">Innifalið:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Val á milli sérsniðið matarplan eða útreiknuð næringargildi</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Uppskriftir og fræðsluefni</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Vikulegt check-in og stuðningur</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>App sem heldur utan um allt</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Aðgangur að þjálfara 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Venjur og árangursmiðað ferli</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-400 text-sm mt-4 italic">Athugið: Æfingaplan ekki innifalið</p>
+                </div>
+
+                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'nutrition-6-month')">
+                    <div class="form-group">
+                        <label for="nutrition-6-name">Fullt nafn *</label>
+                        <input type="text" id="nutrition-6-name" name="name" required placeholder="Jón Jónsson">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-6-kennitala">Kennitala *</label>
+                        <input type="text" id="nutrition-6-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-6-email">Netfang *</label>
+                        <input type="email" id="nutrition-6-email" name="email" required placeholder="jon@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nutrition-6-phone">Símanúmer *</label>
+                        <input type="tel" id="nutrition-6-phone" name="phone" required placeholder="123-4567">
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="nutrition-6-terms" name="terms" required>
+                        <label for="nutrition-6-terms">
+                            Ég samþykki greiðsluskilmála *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        Halda áfram í greiðslu
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Training 3 Month Modal -->
+        <div id="training-3-month-modal" class="subscription-modal" onclick="closeModalOnOverlay(event, 'training-3-month')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeModal('training-3-month')">&times;</button>
+                
+                <div class="modal-header">
+                    <h3 class="text-2xl font-bold text-white mb-2">Fjarþjálfun - 3 mánuðir</h3>
+                    <p class="text-[var(--brand-accent)] text-xl font-semibold">34.990 kr/mán</p>
+                </div>
+
+                <div class="modal-details">
+                    <h4 class="text-lg font-semibold text-white mb-3">Innifalið:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Sérsniðið matarplan</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Æfingaplan sérsniðið að þínum markmiðum</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Uppskriftir og fræðsluefni</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Vikulegt check-in og stuðningur</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>App sem heldur utan um allt</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Aðgangur að þjálfara 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Venjur og árangursmiðað ferli</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'training-3-month')">
+                    <div class="form-group">
+                        <label for="training-3-name">Fullt nafn *</label>
+                        <input type="text" id="training-3-name" name="name" required placeholder="Jón Jónsson">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-3-kennitala">Kennitala *</label>
+                        <input type="text" id="training-3-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-3-email">Netfang *</label>
+                        <input type="email" id="training-3-email" name="email" required placeholder="jon@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-3-phone">Símanúmer *</label>
+                        <input type="tel" id="training-3-phone" name="phone" required placeholder="123-4567">
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="training-3-terms" name="terms" required>
+                        <label for="training-3-terms">
+                            Ég samþykki greiðsluskilmála *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        Halda áfram í greiðslu
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Training 6 Month Modal -->
+        <div id="training-6-month-modal" class="subscription-modal" onclick="closeModalOnOverlay(event, 'training-6-month')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeModal('training-6-month')">&times;</button>
+                
+                <div class="modal-header">
+                    <h3 class="text-2xl font-bold text-white mb-2">Fjarþjálfun - 6 mánuðir</h3>
+                    <p class="text-[var(--brand-accent)] text-xl font-semibold">31.990 kr/mán</p>
+                    <span class="inline-block bg-[var(--brand-accent)] text-white text-xs px-3 py-1 rounded-full mt-2">Vinsælast</span>
+                </div>
+
+                <div class="modal-details">
+                    <h4 class="text-lg font-semibold text-white mb-3">Innifalið:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Sérsniðið matarplan</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Æfingaplan sérsniðið að þínum markmiðum</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Uppskriftir og fræðsluefni</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Vikulegt check-in og stuðningur</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>App sem heldur utan um allt</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Aðgangur að þjálfara 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-[var(--brand-accent)] mt-1">✓</span>
+                            <span>Venjur og árangursmiðað ferli</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'training-6-month')">
+                    <div class="form-group">
+                        <label for="training-6-name">Fullt nafn *</label>
+                        <input type="text" id="training-6-name" name="name" required placeholder="Jón Jónsson">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-6-kennitala">Kennitala *</label>
+                        <input type="text" id="training-6-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-6-email">Netfang *</label>
+                        <input type="email" id="training-6-email" name="email" required placeholder="jon@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="training-6-phone">Símanúmer *</label>
+                        <input type="tel" id="training-6-phone" name="phone" required placeholder="123-4567">
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="training-6-terms" name="terms" required>
+                        <label for="training-6-terms">
+                            Ég samþykki greiðsluskilmála *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        Halda áfram í greiðslu
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
@@ -1361,6 +1959,84 @@
                 text.textContent = 'Fela valmöguleika';
                 chevron.classList.add('rotated');
             }
+        }
+
+        // Modal Functions
+        function openModal(modalType) {
+            const modal = document.getElementById(`${modalType}-modal`);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeModal(modalType) {
+            const modal = document.getElementById(`${modalType}-modal`);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        function closeModalOnOverlay(event, modalType) {
+            // Close modal only if clicking on the overlay (not the content)
+            if (event.target.classList.contains('subscription-modal')) {
+                closeModal(modalType);
+            }
+        }
+
+        // Close modals with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.subscription-modal.active');
+                if (activeModal) {
+                    const modalId = activeModal.id.replace('-modal', '');
+                    closeModal(modalId);
+                }
+            }
+        });
+
+        // Handle form submission
+        function handleSubscriptionSubmit(event, subscriptionType) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Extract form data
+            const data = {
+                subscriptionType: subscriptionType,
+                name: formData.get('name'),
+                kennitala: formData.get('kennitala'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                termsAccepted: formData.get('terms') === 'on'
+            };
+
+            // Pricing information based on subscription type
+            const pricingInfo = {
+                'nutrition-3-month': { type: 'Næringarþjálfun', duration: '3 mánuðir', price: '27.990 kr/mán', totalPrice: '83.970 kr' },
+                'nutrition-6-month': { type: 'Næringarþjálfun', duration: '6 mánuðir', price: '23.990 kr/mán', totalPrice: '143.940 kr' },
+                'training-3-month': { type: 'Fjarþjálfun', duration: '3 mánuðir', price: '34.990 kr/mán', totalPrice: '104.970 kr' },
+                'training-6-month': { type: 'Fjarþjálfun', duration: '6 mánuðir', price: '31.990 kr/mán', totalPrice: '191.940 kr' }
+            };
+
+            data.subscription = pricingInfo[subscriptionType];
+
+            // Log data for now (ready for backend integration)
+            console.log('Subscription Data:', data);
+
+            // TODO: Replace this with actual payment link integration
+            // Example: window.location.href = `https://payment-provider.com/checkout?data=${encodeURIComponent(JSON.stringify(data))}`;
+            
+            // For now, show a confirmation alert
+            alert(`Takk fyrir! Þú ert að halda áfram í greiðslu fyrir:\n\n${data.subscription.type} - ${data.subscription.duration}\n${data.subscription.price}\n\nÞetta mun síðar tengjast greiðslukerfi.`);
+            
+            // Close modal after submission
+            closeModal(subscriptionType);
+            
+            // Reset form
+            form.reset();
         }
     </script>
 
