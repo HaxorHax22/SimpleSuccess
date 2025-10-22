@@ -605,6 +605,38 @@
         color: var(--brand-gray-text);
     }
 
+    .form-group select,
+    .form-group textarea {
+        background: var(--brand-dark-blue);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: var(--brand-light-text);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--brand-accent);
+        box-shadow: 0 0 0 3px rgba(188, 176, 167, 0.1);
+    }
+
+    .form-group select {
+        cursor: pointer;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .form-group textarea::placeholder {
+        color: var(--brand-gray-text);
+    }
+
     .form-checkbox {
         display: flex;
         align-items: start;
@@ -1452,38 +1484,9 @@
                     <p class="text-gray-400 text-sm mt-4 italic">Athugið: Æfingaplan ekki innifalið</p>
                 </div>
 
-                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'nutrition-3-month')">
-                    <div class="form-group">
-                        <label for="nutrition-3-name">Fullt nafn *</label>
-                        <input type="text" id="nutrition-3-name" name="name" required placeholder="Jón Jónsson">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-3-kennitala">Kennitala *</label>
-                        <input type="text" id="nutrition-3-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-3-email">Netfang *</label>
-                        <input type="email" id="nutrition-3-email" name="email" required placeholder="jon@mail.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-3-phone">Símanúmer *</label>
-                        <input type="tel" id="nutrition-3-phone" name="phone" required placeholder="123-4567">
-                    </div>
-
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="nutrition-3-terms" name="terms" required>
-                        <label for="nutrition-3-terms">
-                            Ég samþykki greiðsluskilmála *
-                        </label>
-                    </div>
-
-                    <button type="submit" class="modal-submit-btn">
-                        Halda áfram í greiðslu
-                    </button>
-                </form>
+                <button onclick="openSubscriptionForm('nutrition-3-month')" class="modal-submit-btn">
+                    Veldu þetta
+                </button>
             </div>
         </div>
 
@@ -1529,38 +1532,9 @@
                     <p class="text-gray-400 text-sm mt-4 italic">Athugið: Æfingaplan ekki innifalið</p>
                 </div>
 
-                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'nutrition-6-month')">
-                    <div class="form-group">
-                        <label for="nutrition-6-name">Fullt nafn *</label>
-                        <input type="text" id="nutrition-6-name" name="name" required placeholder="Jón Jónsson">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-6-kennitala">Kennitala *</label>
-                        <input type="text" id="nutrition-6-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-6-email">Netfang *</label>
-                        <input type="email" id="nutrition-6-email" name="email" required placeholder="jon@mail.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nutrition-6-phone">Símanúmer *</label>
-                        <input type="tel" id="nutrition-6-phone" name="phone" required placeholder="123-4567">
-                    </div>
-
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="nutrition-6-terms" name="terms" required>
-                        <label for="nutrition-6-terms">
-                            Ég samþykki greiðsluskilmála *
-                        </label>
-                    </div>
-
-                    <button type="submit" class="modal-submit-btn">
-                        Halda áfram í greiðslu
-                    </button>
-                </form>
+                <button onclick="openSubscriptionForm('nutrition-6-month')" class="modal-submit-btn">
+                    Veldu þetta
+                </button>
             </div>
         </div>
 
@@ -1608,38 +1582,9 @@
                     </ul>
                 </div>
 
-                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'training-3-month')">
-                    <div class="form-group">
-                        <label for="training-3-name">Fullt nafn *</label>
-                        <input type="text" id="training-3-name" name="name" required placeholder="Jón Jónsson">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="training-3-kennitala">Kennitala *</label>
-                        <input type="text" id="training-3-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="training-3-email">Netfang *</label>
-                        <input type="email" id="training-3-email" name="email" required placeholder="jon@mail.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="training-3-phone">Símanúmer *</label>
-                        <input type="tel" id="training-3-phone" name="phone" required placeholder="123-4567">
-                    </div>
-
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="training-3-terms" name="terms" required>
-                        <label for="training-3-terms">
-                            Ég samþykki greiðsluskilmála *
-                        </label>
-                    </div>
-
-                    <button type="submit" class="modal-submit-btn">
-                        Halda áfram í greiðslu
-                    </button>
-                </form>
+                <button onclick="openSubscriptionForm('training-3-month')" class="modal-submit-btn">
+                    Veldu þetta
+                </button>
             </div>
         </div>
 
@@ -1688,36 +1633,66 @@
                     </ul>
                 </div>
 
-                <form class="modal-form" onsubmit="handleSubscriptionSubmit(event, 'training-6-month')">
+                <button onclick="openSubscriptionForm('training-6-month')" class="modal-submit-btn">
+                    Veldu þetta
+                </button>
+            </div>
+        </div>
+
+        <!-- Universal Subscription Form Modal -->
+        <div id="subscription-form-modal" class="subscription-modal" onclick="closeModalOnOverlay(event, 'subscription-form')">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeModal('subscription-form')">&times;</button>
+                
+                <div class="modal-header">
+                    <h3 class="text-2xl font-bold text-white mb-2">Skrá mig í þjálfun</h3>
+                    <p class="text-gray-400">Fylltu út eyðublaðið og við munum hafa samband við þig</p>
+                </div>
+
+                <form name="subscription-form" method="POST" data-netlify="true" class="modal-form" onsubmit="handleSubscriptionFormSubmit(event)">
+                    <!-- Hidden field for Netlify form detection -->
+                    <input type="hidden" name="form-name" value="subscription-form">
+                    
                     <div class="form-group">
-                        <label for="training-6-name">Fullt nafn *</label>
-                        <input type="text" id="training-6-name" name="name" required placeholder="Jón Jónsson">
+                        <label for="sub-name">Nafn *</label>
+                        <input type="text" id="sub-name" name="name" required placeholder="Jón Jónsson">
                     </div>
 
                     <div class="form-group">
-                        <label for="training-6-kennitala">Kennitala *</label>
-                        <input type="text" id="training-6-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                        <label for="sub-email">Netfang *</label>
+                        <input type="email" id="sub-email" name="email" required placeholder="jon@mail.com">
                     </div>
 
                     <div class="form-group">
-                        <label for="training-6-email">Netfang *</label>
-                        <input type="email" id="training-6-email" name="email" required placeholder="jon@mail.com">
+                        <label for="sub-kennitala">Kennitala *</label>
+                        <input type="text" id="sub-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
                     </div>
 
                     <div class="form-group">
-                        <label for="training-6-phone">Símanúmer *</label>
-                        <input type="tel" id="training-6-phone" name="phone" required placeholder="123-4567">
+                        <label for="sub-goals">Markmið</label>
+                        <textarea id="sub-goals" name="goals" rows="4" placeholder="Hvað eru þín markmið með þjálfuninni?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="package-select">Pakki *</label>
+                        <select id="package-select" name="package" required>
+                            <option value="">Veldu pakka</option>
+                            <option value="nutrition-3">Næringarþjálfun - 3 mánuðir (27.990 kr/mán)</option>
+                            <option value="nutrition-6">Næringarþjálfun - 6 mánuðir (23.990 kr/mán)</option>
+                            <option value="training-3">Fjarþjálfun - 3 mánuðir (34.990 kr/mán)</option>
+                            <option value="training-6">Fjarþjálfun - 6 mánuðir (31.990 kr/mán)</option>
+                        </select>
                     </div>
 
                     <div class="form-checkbox">
-                        <input type="checkbox" id="training-6-terms" name="terms" required>
-                        <label for="training-6-terms">
+                        <input type="checkbox" id="sub-terms" name="terms" required>
+                        <label for="sub-terms">
                             Ég samþykki greiðsluskilmála *
                         </label>
                     </div>
 
                     <button type="submit" class="modal-submit-btn">
-                        Halda áfram í greiðslu
+                        Senda beiðni
                     </button>
                 </form>
             </div>
@@ -1996,47 +1971,52 @@
             }
         });
 
-        // Handle form submission
-        function handleSubscriptionSubmit(event, subscriptionType) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const formData = new FormData(form);
-            
-            // Extract form data
-            const data = {
-                subscriptionType: subscriptionType,
-                name: formData.get('name'),
-                kennitala: formData.get('kennitala'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                termsAccepted: formData.get('terms') === 'on'
-            };
+        // Close all modals helper function
+        function closeAllModals() {
+            document.querySelectorAll('.subscription-modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
 
-            // Pricing information based on subscription type
-            const pricingInfo = {
-                'nutrition-3-month': { type: 'Næringarþjálfun', duration: '3 mánuðir', price: '27.990 kr/mán', totalPrice: '83.970 kr' },
-                'nutrition-6-month': { type: 'Næringarþjálfun', duration: '6 mánuðir', price: '23.990 kr/mán', totalPrice: '143.940 kr' },
-                'training-3-month': { type: 'Fjarþjálfun', duration: '3 mánuðir', price: '34.990 kr/mán', totalPrice: '104.970 kr' },
-                'training-6-month': { type: 'Fjarþjálfun', duration: '6 mánuðir', price: '31.990 kr/mán', totalPrice: '191.940 kr' }
-            };
-
-            data.subscription = pricingInfo[subscriptionType];
-
-            // Log data for now (ready for backend integration)
-            console.log('Subscription Data:', data);
-
-            // TODO: Replace this with actual payment link integration
-            // Example: window.location.href = `https://payment-provider.com/checkout?data=${encodeURIComponent(JSON.stringify(data))}`;
+        // Open subscription form modal with pre-selected package
+        function openSubscriptionForm(packageType) {
+            // Close any open info modal
+            closeAllModals();
             
-            // For now, show a confirmation alert
-            alert(`Takk fyrir! Þú ert að halda áfram í greiðslu fyrir:\n\n${data.subscription.type} - ${data.subscription.duration}\n${data.subscription.price}\n\nÞetta mun síðar tengjast greiðslukerfi.`);
+            // Open subscription form modal
+            const formModal = document.getElementById('subscription-form-modal');
+            if (formModal) {
+                formModal.classList.add('active');
+                
+                // Pre-select package in dropdown
+                const packageMap = {
+                    'nutrition-3-month': 'nutrition-3',
+                    'nutrition-6-month': 'nutrition-6',
+                    'training-3-month': 'training-3',
+                    'training-6-month': 'training-6'
+                };
+                
+                const packageSelect = document.getElementById('package-select');
+                if (packageSelect && packageMap[packageType]) {
+                    packageSelect.value = packageMap[packageType];
+                }
+                
+                // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Handle subscription form submission
+        function handleSubscriptionFormSubmit(event) {
+            // Allow the form to submit naturally to Netlify
+            // Netlify will handle the form submission
             
-            // Close modal after submission
-            closeModal(subscriptionType);
-            
-            // Reset form
-            form.reset();
+            // Show a simple confirmation
+            setTimeout(() => {
+                closeModal('subscription-form');
+                alert('Takk fyrir! Við munum hafa samband við þig fljótlega.');
+            }, 100);
         }
     </script>
 
