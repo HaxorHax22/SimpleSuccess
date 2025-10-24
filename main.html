@@ -788,6 +788,29 @@
             padding: 0.875rem;
         }
     }
+
+    /* PNG Image Blending */
+    .png-blend {
+        mix-blend-mode: multiply;
+        filter: contrast(1.1) brightness(0.95);
+        background-color: var(--brand-mid-blue);
+    }
+
+    /* Ensure PNG images blend well with dark backgrounds */
+    @media (prefers-color-scheme: dark) {
+        .png-blend {
+            mix-blend-mode: screen;
+            filter: contrast(1.2) brightness(1.1);
+        }
+    }
+
+    /* Fallback for browsers that don't support mix-blend-mode */
+    @supports not (mix-blend-mode: multiply) {
+        .png-blend {
+            filter: contrast(1.1) brightness(0.9) saturate(0.8);
+            background-color: rgba(30, 42, 53, 0.1);
+        }
+    }
     </style>
 </head>
 <body class="bg-brand-dark text-brand-light">
@@ -929,8 +952,8 @@
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                             <!-- Image -->
                             <div class="order-2 lg:order-1">
-                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
-                                    <img src="img/about_Kjartan.png" alt="Kjartan" class="w-full h-full object-cover">
+                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden flex items-center justify-center">
+                                    <img src="about-us_img/Kjartan-and-Tinna-2.png" alt="Kjartan" class="max-h-full max-w-full object-contain png-blend">
                     </div>
                             </div>
                             <!-- Text -->
@@ -959,8 +982,8 @@
                             </div>
                             <!-- Image -->
                             <div class="order-2">
-                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face" alt="Tinna" class="w-full h-full object-cover">
+                                <div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden flex items-center justify-center">
+                                    <img src="about-us_img/Kjartan-and-Tinna.PNG" alt="Tinna" class="max-h-full max-w-full object-contain png-blend">
                                 </div>
                             </div>
                         </div>
