@@ -1412,9 +1412,9 @@
                                 <label for="purpose" class="block text-sm font-medium text-gray-300">Hvað viltu gera?</label>
                                 <select name="purpose" id="purpose" required class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
                                     <option value="">Veldu valkost</option>
-                                    <option value="zoom">Bóka Zoom fund</option>
-                                    <option value="inquiry">Senda fyrirspurn</option>
-                                    <option value="both">Bæði</option>
+                                    <option value="Bóka Zoom fund">Bóka Zoom fund</option>
+                                    <option value="Senda fyrirspurn">Senda fyrirspurn</option>
+                                    <option value="Bæði">Bæði</option>
                                 </select>
                     </div>
                             <div>
@@ -1702,10 +1702,10 @@
                         <label for="package-select">Pakki *</label>
                         <select id="package-select" name="package" required>
                             <option value="">Veldu pakka</option>
-                            <option value="nutrition-3">Næringarþjálfun - 3 mánuðir (27.990 kr/mán)</option>
-                            <option value="nutrition-6">Næringarþjálfun - 6 mánuðir (23.990 kr/mán)</option>
-                            <option value="training-3">Fjarþjálfun - 3 mánuðir (34.990 kr/mán)</option>
-                            <option value="training-6">Fjarþjálfun - 6 mánuðir (31.990 kr/mán)</option>
+                            <option value="Næringarþjálfun - 3 mánuðir (27.990 kr/mán)">Næringarþjálfun - 3 mánuðir (27.990 kr/mán)</option>
+                            <option value="Næringarþjálfun - 6 mánuðir (23.990 kr/mán)">Næringarþjálfun - 6 mánuðir (23.990 kr/mán)</option>
+                            <option value="Fjarþjálfun - 3 mánuðir (34.990 kr/mán)">Fjarþjálfun - 3 mánuðir (34.990 kr/mán)</option>
+                            <option value="Fjarþjálfun - 6 mánuðir (31.990 kr/mán)">Fjarþjálfun - 6 mánuðir (31.990 kr/mán)</option>
                         </select>
                     </div>
 
@@ -2034,10 +2034,10 @@
                 
                 // Pre-select package in dropdown
                 const packageMap = {
-                    'nutrition-3-month': 'nutrition-3',
-                    'nutrition-6-month': 'nutrition-6',
-                    'training-3-month': 'training-3',
-                    'training-6-month': 'training-6'
+                    'nutrition-3-month': 'Næringarþjálfun - 3 mánuðir (27.990 kr/mán)',
+                    'nutrition-6-month': 'Næringarþjálfun - 6 mánuðir (23.990 kr/mán)',
+                    'training-3-month': 'Fjarþjálfun - 3 mánuðir (34.990 kr/mán)',
+                    'training-6-month': 'Fjarþjálfun - 6 mánuðir (31.990 kr/mán)'
                 };
                 
                 const packageSelect = document.getElementById('package-select');
