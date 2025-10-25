@@ -1393,7 +1393,7 @@
                     <!-- Form -->
                     <div class="lg:col-span-3 bg-brand-mid-blue rounded-xl shadow-lg p-8 border border-white/10 fade-in-left stagger-2">
                          <h3 class="text-2xl font-bold text-white mb-6">Bóka Zoom fund eða senda fyrirspurn</h3>
-                        <form name="contact-form" method="POST" data-netlify="true" class="space-y-6" onsubmit="handleContactFormSubmit(event)">
+                        <form name="contact-form" method="POST" data-netlify="true" action="/thankyou-contact.html" class="space-y-6">
                             <!-- Hidden field for Netlify form detection -->
                             <input type="hidden" name="form-name" value="contact-form">
                             <div>
@@ -1406,7 +1406,7 @@
                     </div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-300">Símanúmer</label>
-                                <input type="tel" name="phone" id="phone" placeholder="123-4567" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
+                                <input type="tel" name="phone" id="phone" placeholder="123-4567" pattern="[0-9]{3}-[0-9]{4}" inputmode="numeric" class="mt-1 block w-full px-4 py-3 bg-[var(--brand-dark-blue)] border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent)] text-white">
                         </div>
                             <div>
                                 <label for="purpose" class="block text-sm font-medium text-gray-300">Hvað viltu gera?</label>
@@ -1674,7 +1674,7 @@
                     <p class="text-gray-400">Fylltu út eyðublaðið og við munum hafa samband við þig</p>
                 </div>
 
-                <form name="subscription-form" method="POST" data-netlify="true" class="modal-form" onsubmit="handleSubscriptionFormSubmit(event)">
+                <form name="subscription-form" method="POST" data-netlify="true" action="/thankyou-subscription.html" class="modal-form">
                     <!-- Hidden field for Netlify form detection -->
                     <input type="hidden" name="form-name" value="subscription-form">
                     
@@ -1690,7 +1690,7 @@
 
                     <div class="form-group">
                         <label for="sub-kennitala">Kennitala *</label>
-                        <input type="text" id="sub-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-?[0-9]{4}">
+                        <input type="text" id="sub-kennitala" name="kennitala" required placeholder="000000-0000" pattern="[0-9]{6}-[0-9]{4}" inputmode="numeric">
                     </div>
 
                     <div class="form-group">
@@ -1855,6 +1855,18 @@
         // Footer Year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Format kennitala fields
+        const kennitalaInputs = document.querySelectorAll('[id$="-kennitala"]');
+        kennitalaInputs.forEach(input => {
+            input.addEventListener('input', (e) => formatKennitala(e.target));
+        });
+
+        // Format phone fields
+        const phoneInputs = document.querySelectorAll('[id$="-phone"], #phone');
+        phoneInputs.forEach(input => {
+            input.addEventListener('input', (e) => formatPhone(e.target));
+        });
+
         // Testimonials Carousel
         const carousel = document.getElementById('testimonial-carousel');
         const prevBtn = document.getElementById('prev-testimonial');
@@ -1967,6 +1979,8 @@
             if (modal) {
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.position = 'fixed'; // Prevent scroll jump
+                document.body.style.width = '100%'; // Prevent layout shift
             }
         }
 
@@ -1975,6 +1989,8 @@
             if (modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore scrolling
+                document.body.style.position = ''; // Restore position
+                document.body.style.width = ''; // Restore width
             }
         }
 
@@ -2002,6 +2018,8 @@
                 modal.classList.remove('active');
             });
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
         }
 
         // Open subscription form modal with pre-selected package
@@ -2029,31 +2047,42 @@
                 
                 // Prevent background scrolling
                 document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
             }
         }
 
-        // Handle subscription form submission
-        function handleSubscriptionFormSubmit(event) {
-            // Allow the form to submit naturally to Netlify
-            // Netlify will handle the form submission
+        // Note: Form submissions now redirect to thank you pages via Netlify
+        // No JavaScript handlers needed as forms submit naturally to Netlify
+
+        // Format kennitala input (XXXXXX-XXXX)
+        function formatKennitala(input) {
+            let value = input.value.replace(/\D/g, ''); // Remove all non-digits
             
-            // Show a simple confirmation
-            setTimeout(() => {
-                closeModal('subscription-form');
-                alert('Takk fyrir! Við munum hafa samband við þig fljótlega.');
-            }, 100);
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Max 10 digits
+            }
+            
+            if (value.length > 6) {
+                value = value.slice(0, 6) + '-' + value.slice(6);
+            }
+            
+            input.value = value;
         }
 
-        // Handle contact form submission
-        function handleContactFormSubmit(event) {
-            // Allow the form to submit naturally to Netlify
-            // Netlify will handle the form submission
+        // Format phone number input (XXX-XXXX)
+        function formatPhone(input) {
+            let value = input.value.replace(/\D/g, ''); // Remove all non-digits
             
-            // Show a simple confirmation
-            setTimeout(() => {
-                alert('Takk fyrir! Við munum hafa samband við þig fljótlega.');
-                event.target.reset(); // Reset the form
-            }, 100);
+            if (value.length > 7) {
+                value = value.slice(0, 7); // Max 7 digits
+            }
+            
+            if (value.length > 3) {
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            }
+            
+            input.value = value;
         }
     </script>
 
